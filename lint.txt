@@ -1,0 +1,337 @@
+﻿
+> symbol-website@0.0.0 lint
+> eslint .
+
+
+C:\new symbol website\public\about-template\scripts\gsap-animations.js
+  1:1  error  Parsing error: Unexpected character '∩┐╜'
+
+C:\new symbol website\public\about-template\scripts\main.js
+   1:933    error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:934    error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:935    error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:947    error  'e' is defined but never used                                                                 no-unused-vars
+   1:960    error  'jQuery' is not defined                                                                       no-undef
+   1:968    error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:980    error  'e' is defined but never used                                                                 no-unused-vars
+   1:1062   error  't' is defined but never used                                                                 no-unused-vars
+   1:4298   error  'e' is defined but never used                                                                 no-unused-vars
+   1:4300   error  'n' is defined but never used                                                                 no-unused-vars
+   1:6833   error  't' is defined but never used                                                                 no-unused-vars
+   1:6835   error  'e' is defined but never used                                                                 no-unused-vars
+   1:14234  error  't' is defined but never used                                                                 no-unused-vars
+   1:14849  error  Unnecessary escape character: \/                                                              no-useless-escape
+   1:16360  error  't' is defined but never used                                                                 no-unused-vars
+   1:16362  error  Empty block statement                                                                         no-empty
+   1:17346  error  'n' is defined but never used                                                                 no-unused-vars
+   1:17663  error  Unnecessary escape character: \[                                                              no-useless-escape
+   1:21984  error  't' is defined but never used                                                                 no-unused-vars
+   1:23594  error  Unexpected constant condition                                                                 no-constant-condition
+   1:26739  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:26740  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:26741  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:26742  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:26743  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:29243  error  't' is defined but never used                                                                 no-unused-vars
+   1:32393  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:32394  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:35974  error  't' is defined but never used                                                                 no-unused-vars
+   1:45754  error  Unnecessary escape character: \/                                                              no-useless-escape
+   1:46355  error  'gallarySlider' is not defined                                                                no-undef
+   1:47001  error  't' is defined but never used                                                                 no-unused-vars
+   1:47698  error  't' is defined but never used                                                                 no-unused-vars
+   1:47860  error  't' is defined but never used                                                                 no-unused-vars
+   1:47862  error  'e' is defined but never used                                                                 no-unused-vars
+   1:48293  error  't' is defined but never used                                                                 no-unused-vars
+   1:48341  error  'dataLayer' is not defined                                                                    no-undef
+   1:49711  error  'dataLayer' is not defined                                                                    no-undef
+   1:53317  error  't' is defined but never used                                                                 no-unused-vars
+   1:53499  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:53500  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:53501  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:53502  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:53503  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:53504  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:53505  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:54712  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:54713  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:54714  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:54715  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:54716  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+   1:56043  error  't' is defined but never used                                                                 no-unused-vars
+   1:57937  error  'bodyHomePage' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+   1:57995  error  'modules' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+   1:67549  error  'e' is defined but never used                                                                 no-unused-vars
+   1:73583  error  't' is defined but never used                                                                 no-unused-vars
+   1:74451  error  't' is defined but never used                                                                 no-unused-vars
+   1:74642  error  'e' is defined but never used                                                                 no-unused-vars
+   1:75046  error  Unsafe usage of ThrowStatement                                                                no-unsafe-finally
+   1:80714  error  'e' is defined but never used                                                                 no-unused-vars
+   1:81660  error  't' is defined but never used                                                                 no-unused-vars
+   1:82806  error  't' is defined but never used                                                                 no-unused-vars
+   1:82808  error  Empty block statement                                                                         no-empty
+  10:3547   error  Unnecessary escape character: \[                                                              no-useless-escape
+  10:10868  error  Unexpected constant truthiness on the left-hand side of a `&&` expression                     no-constant-binary-expression
+  10:21402  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  10:24467  error  't' is defined but never used                                                                 no-unused-vars
+  10:24469  error  'e' is defined but never used                                                                 no-unused-vars
+  10:24471  error  'n' is defined but never used                                                                 no-unused-vars
+  10:24524  error  't' is defined but never used                                                                 no-unused-vars
+  10:24526  error  'e' is defined but never used                                                                 no-unused-vars
+  10:24528  error  'n' is defined but never used                                                                 no-unused-vars
+  10:24583  error  't' is defined but never used                                                                 no-unused-vars
+  10:24585  error  'e' is defined but never used                                                                 no-unused-vars
+  10:24587  error  'n' is defined but never used                                                                 no-unused-vars
+  10:24589  error  'i' is defined but never used                                                                 no-unused-vars
+  10:32588  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  10:40908  error  't' is defined but never used                                                                 no-unused-vars
+  10:40910  error  'e' is defined but never used                                                                 no-unused-vars
+  10:41150  error  't' is defined but never used                                                                 no-unused-vars
+  10:41152  error  'e' is defined but never used                                                                 no-unused-vars
+  10:41154  error  'n' is defined but never used                                                                 no-unused-vars
+  10:42522  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  10:42564  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  10:47551  error  Unnecessary escape character: \(                                                              no-useless-escape
+  10:49551  error  't' is defined but never used                                                                 no-unused-vars
+  10:49553  error  Empty block statement                                                                         no-empty
+  10:49832  error  't' is defined but never used                                                                 no-unused-vars
+  10:52230  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  10:56346  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  10:56473  error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  29:4890   error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  29:9884   error  Expected a conditional expression and instead saw an assignment                               no-cond-assign
+  29:22987  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  29:22988  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  29:22989  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  29:22990  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  29:22991  error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  29:26212  error  't' is defined but never used                                                                 no-unused-vars
+  29:29148  error  't' is defined but never used                                                                 no-unused-vars
+  29:29150  error  Empty block statement                                                                         no-empty
+  39:3124   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3125   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3126   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3127   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3128   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3129   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3130   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3131   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3132   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3133   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3134   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3135   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3136   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3137   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3138   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3139   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3140   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3141   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3142   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3143   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3144   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3145   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3146   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:3147   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4235   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4236   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4237   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4238   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4239   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4240   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4241   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4242   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4243   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4244   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4245   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4246   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4247   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4248   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4249   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4250   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4251   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:4265   error  'n' is defined but never used                                                                 no-unused-vars
+  39:6937   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:6938   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:6939   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:6940   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:6941   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7873   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7874   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7875   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7876   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7877   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7878   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7879   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7880   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7881   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7882   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7883   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7884   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7885   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7886   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7887   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7888   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7889   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7890   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7891   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7892   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7893   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7894   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7895   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7896   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7897   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7898   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7899   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7900   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7901   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7902   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7903   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7904   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7905   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7906   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7907   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7908   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7909   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7910   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7911   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7912   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7913   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7914   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7915   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7916   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7917   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7918   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7919   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7920   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7921   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:7961   error  't' is defined but never used                                                                 no-unused-vars
+  39:8126   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:8127   error  Unexpected comma in middle of array                                                           no-sparse-arrays
+  39:17367  error  'YT' is not defined                                                                           no-undef
+  39:17400  error  'YT' is not defined                                                                           no-undef
+  39:24531  error  'e' is defined but never used                                                                 no-unused-vars
+  39:25113  error  'e' is defined but never used                                                                 no-unused-vars
+  39:25115  error  'n' is defined but never used                                                                 no-unused-vars
+  39:25117  error  'i' is defined but never used                                                                 no-unused-vars
+  39:25119  error  'r' is defined but never used                                                                 no-unused-vars
+  39:67583  error  't' is defined but never used                                                                 no-unused-vars
+  39:82724  error  'n' is defined but never used                                                                 no-unused-vars
+  45:72     error  'observer' is defined but never used                                                          no-unused-vars
+
+C:\new symbol website\src\App.jsx
+  29:21  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  27 |   // Close menu on route change
+  28 |   useEffect(() => {
+> 29 |     if (menuActive) setMenuActive(false);
+     |                     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  30 |   }, [location.pathname]);
+  31 |
+  32 |   return (                               react-hooks/set-state-in-effect
+  30:6   warning  React Hook useEffect has a missing dependency: 'menuActive'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/exhaustive-deps
+  68:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  66 |   useEffect(() => {
+  67 |     if (!isHomePage && !hasVisited) {
+> 68 |       setHasVisited(true);
+     |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  69 |       sessionStorage.setItem('hasVisited', 'true');
+  70 |     }
+  71 |   }, [isHomePage, hasVisited]);  react-hooks/set-state-in-effect
+
+C:\new symbol website\src\components\Creativehook\Creativehook\Hook.jsx
+   2:46  error    'useMotionValue' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                   no-unused-vars
+  28:6   warning  React Hook React.useLayoutEffect has a missing dependency: 'smoothX'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\new symbol website\src\components\Creativehook\Creativehook\WhoWeAre.jsx
+  4:8  error  'styles' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Creativehook\Cube\index.jsx
+  6:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Header\nav\Curve\index.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Header\nav\Link\index.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Header\nav\index.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Preloader\index.jsx
+   4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+  14:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  12 |
+  13 |     useEffect(() => {
+> 14 |         setDimension({ width: window.innerWidth, height: window.innerHeight })
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |     }, [])
+  16 |
+  17 |     useEffect(() => {  react-hooks/set-state-in-effect
+
+C:\new symbol website\src\components\Textscroll\Textscroll\Character.jsx
+  1:35  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Textscroll\Textscroll\Paragraph.jsx
+  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Textscroll\Textscroll\Scroll2.jsx
+  8:11  error  'words' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\Textscroll\Textscroll\TextScroll2.jsx
+  9:11  error  'words' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\layout\Navbar.jsx
+  43:11  error  'handleScrollTo' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\sections\LeadershipLocation.jsx
+  2:35  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\sections\Services.jsx
+   47:19  error  'cards' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u          no-unused-vars
+   48:19  error  'totalWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+   49:19  error  'viewportWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+   63:23  error  'visibleWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+   64:23  error  'totalWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  119:53  error  'index' is defined but never used                                                              no-unused-vars
+
+C:\new symbol website\src\components\sections\ThreeDSVG.jsx
+  6:20  error  'motion3d' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\components\sections\Work.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\pages\About.jsx
+  6:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\new symbol website\src\pages\ConferencesPage.jsx
+    1:36  error    'useState' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                  no-unused-vars
+  285:8   warning  React Hook useEffect has a missing dependency: 'animateSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\new symbol website\src\pages\DigitalExperiencesPage.jsx
+  316:8  warning  React Hook useEffect has a missing dependency: 'animateSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\new symbol website\src\pages\SignboardPage.jsx
+  315:8  warning  React Hook useEffect has a missing dependency: 'animateSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Γ£û 242 problems (237 errors, 5 warnings)
+

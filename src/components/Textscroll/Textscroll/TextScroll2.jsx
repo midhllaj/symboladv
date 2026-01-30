@@ -6,7 +6,7 @@ const paragraph = "Mission: To deliver creative, strategic, and impactful advert
 
 export default function TextScroll2() {
 
-    const words = paragraph.split(" ")
+    // const words = paragraph.split(" ")
     return (
         <main >
             <div className={styles.bag}></div>

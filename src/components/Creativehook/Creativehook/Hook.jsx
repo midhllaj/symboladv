@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { useScroll, useTransform, useSpring } from 'framer-motion';
 import Cube from '../Cube';
 import Scroll from '../../Textscroll/Textscroll/Scroll';
 import TextScroll from '../../Textscroll/Textscroll/Textscroll';
@@ -25,7 +25,7 @@ export const Hook = () => {
   // FORCE INIT: Immediately set spring to start value to prevent 0-to-28 animation on load
   React.useLayoutEffect(() => {
     smoothX.jump(28);
-  }, []);
+  }, [smoothX]);
 
   // Y position - refined with keyframes to control height at each section
   // Section 1: 4 (Lowered from 10) -> Section 2: 0 -> Section 3: -10 (More down at end as requested)

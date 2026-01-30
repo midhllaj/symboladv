@@ -44,25 +44,8 @@ const Services = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const cards = horizontalContainerRef.current.children;
-            const totalWidth = horizontalContainerRef.current.scrollWidth;
-            const viewportWidth = window.innerWidth;
-
-            // Calculate how much to scroll: Total width of cards minus the visible remaining space width
-            // Actually simpler: typically we scroll (totalWidth - windowWidth) but here we have a split screen potentially?
-            // User requested "big" section. Horizontal scroll typically takes full width.
-            // Let's assume the design requested:
-            // Left sticky: "Our Expertise..."
-            // Right scroll: Cards. 
-            // BUT standard horizontal scroll usually pins the WHOLE section and moves content leftwards.
-            // Let's implement the "Pin and Pan" strategy.
-
             // If desktop (min-width: 768px)
             if (window.innerWidth >= 768) {
-                // Use parent element width to get the actual visible horizontal space for the cards container
-                const visibleWidth = horizontalContainerRef.current.parentElement ? horizontalContainerRef.current.parentElement.offsetWidth : window.innerWidth * 0.65;
-                const totalWidth = horizontalContainerRef.current.scrollWidth;
-
                 gsap.to(horizontalContainerRef.current, {
                     x: -3500, // Hardcoded large value to guarantee reaching the end
                     ease: "none",
@@ -77,7 +60,6 @@ const Services = () => {
                     }
                 });
             }
-
         }, sectionRef);
 
         return () => ctx.revert();
@@ -116,7 +98,7 @@ const Services = () => {
 
                 >
                     <div ref={horizontalContainerRef} className="flex gap-8 md:gap-20 px-4 md:px-0 flex-nowrap h-[60vh] md:h-[70vh] items-center">
-                        {servicesData.map((service, index) => (
+                        {servicesData.map((service) => (
                             <Link
                                 to={service.link}
                                 key={service.id}

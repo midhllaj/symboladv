@@ -1,0 +1,47 @@
+﻿
+> symbol-website@0.0.0 lint
+> eslint .
+
+
+C:\new symbol website\src\App.jsx
+  29:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+  31:6  warning  React Hook useEffect has a missing dependency: 'menuActive'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  69:7  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+
+C:\new symbol website\src\components\Creativehook\Creativehook\Hook.jsx
+   2:46  error    'useMotionValue' is defined but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u                     no-unused-vars
+  28:6   warning  React Hook React.useLayoutEffect has a missing dependency: 'smoothX'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\new symbol website\src\components\Preloader\index.jsx
+  11:23  error  'setDimension' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u  no-unused-vars
+
+C:\new symbol website\src\components\Textscroll\Textscroll\Scroll2.jsx
+  8:11  error  'words' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u  no-unused-vars
+
+C:\new symbol website\src\components\Textscroll\Textscroll\TextScroll2.jsx
+  9:11  error  'words' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u  no-unused-vars
+
+C:\new symbol website\src\components\layout\Navbar.jsx
+  43:11  error  'handleScrollTo' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u  no-unused-vars
+
+C:\new symbol website\src\components\sections\Services.jsx
+   47:19  error  'cards' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u          no-unused-vars
+   48:19  error  'totalWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u     no-unused-vars
+   49:19  error  'viewportWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u  no-unused-vars
+   63:23  error  'visibleWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u   no-unused-vars
+   64:23  error  'totalWidth' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u     no-unused-vars
+  119:53  error  'index' is defined but never used                                                                            no-unused-vars
+
+C:\new symbol website\src\pages\ConferencesPage.jsx
+    1:36  error    'useState' is defined but never used. Allowed unused vars must match /^[A-Z_]|motion|styles/u                    no-unused-vars
+  285:8   warning  React Hook useEffect has a missing dependency: 'animateSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\new symbol website\src\pages\DigitalExperiencesPage.jsx
+  316:8  warning  React Hook useEffect has a missing dependency: 'animateSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\new symbol website\src\pages\SignboardPage.jsx
+  315:8  warning  React Hook useEffect has a missing dependency: 'animateSlide'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Γ£û 19 problems (12 errors, 7 warnings)
+  0 errors and 2 warnings potentially fixable with the `--fix` option.
+

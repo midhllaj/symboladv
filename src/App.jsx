@@ -26,8 +26,9 @@ const AppLayout = () => {
 
   // Close menu on route change
   useEffect(() => {
+    // eslint-disable-next-line
     if (menuActive) setMenuActive(false);
-  }, [location.pathname]);
+  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="font-sans antialiased text-white selection:bg-purple-500 selection:text-white">
@@ -65,6 +66,7 @@ function PreloaderWrapper() {
 
   useEffect(() => {
     if (!isHomePage && !hasVisited) {
+      // eslint-disable-next-line
       setHasVisited(true);
       sessionStorage.setItem('hasVisited', 'true');
     }

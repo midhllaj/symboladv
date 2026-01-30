@@ -5,7 +5,7 @@ const paragraph = "Vision: To be a trusted advertising partner recognized for in
 
 export default function Scroll2() {
 
-    const words = paragraph.split(" ")
+    // const words = paragraph.split(" ")
     return (
         <main className={styles.Scrolls}>
             <div className={styles.box} ></div>

@@ -40,13 +40,13 @@ const Navbar = ({ menuActive, setMenuActive }) => {
         { name: 'Contact', href: '/#contact' },
     ];
 
-    const handleScrollTo = (e, href) => {
-        const targetId = href.replace('/', '');
-        const target = document.querySelector(targetId);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    // const handleScrollTo = (e, href) => {
+    //     const targetId = href.replace('/', '');
+    //     const target = document.querySelector(targetId);
+    //     if (target) {
+    //         target.scrollIntoView({ behavior: 'smooth' });
+    //     }
+    // };
 
     return (
         <nav

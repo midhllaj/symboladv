@@ -8,11 +8,12 @@ const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten ta
 
 export default function Preloader({ onComplete }) {
     const [index, setIndex] = useState(0);
-    const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
-    useEffect(() => {
-        setDimension({ width: window.innerWidth, height: window.innerHeight })
-    }, [])
+    const [dimension] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return { width: window.innerWidth, height: window.innerHeight }
+        }
+        return { width: 0, height: 0 }
+    });
 
     useEffect(() => {
         if (index == words.length - 1) return;
