@@ -38,41 +38,45 @@ const StickyCards = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const stickyCards = document.querySelectorAll(".sticky-card");
+            const mm = gsap.matchMedia();
 
-            stickyCards.forEach((card, index) => {
-                // Pin all cards except the last one
-                if (index < stickyCards.length - 1) {
-                    ScrollTrigger.create({
-                        trigger: card,
-                        start: "top top",
-                        endTrigger: stickyCards[stickyCards.length - 1],
-                        end: "top top",
-                        pin: true,
-                        pinSpacing: false,
-                    });
-                }
+            mm.add("(min-width: 1001px)", () => {
+                const stickyCards = document.querySelectorAll(".sticky-card");
 
-                // Animate scale, rotation, and overlay for all cards except the last one
-                if (index < stickyCards.length - 1) {
-                    ScrollTrigger.create({
-                        trigger: stickyCards[index + 1],
-                        start: "top bottom",
-                        end: "top top",
-                        onUpdate: (self) => {
-                            const progress = self.progress;
-                            const scale = 1 - progress * 0.25; // Scale from 1 to 0.75
-                            const rotation = (index % 2 === 0 ? 5 : -5) * progress; // Alternate rotation
-                            const afterOpacity = progress; // Overlay opacity from 0 to 1
+                stickyCards.forEach((card, index) => {
+                    const isLast = index === stickyCards.length - 1;
 
-                            gsap.set(card, {
-                                scale: scale,
-                                rotation: rotation,
-                                "--after-opacity": afterOpacity,
-                            });
-                        },
-                    });
-                }
+                    // Pin all cards except the last one (Stacking Effect)
+                    if (!isLast) {
+                        ScrollTrigger.create({
+                            trigger: card,
+                            start: "top top",
+                            endTrigger: stickyCards[stickyCards.length - 1],
+                            end: "top top",
+                            pin: true,
+                            pinSpacing: false,
+                        });
+
+                        // Animate scale, rotation, and overlay
+                        ScrollTrigger.create({
+                            trigger: stickyCards[index + 1],
+                            start: "top bottom",
+                            end: "top top",
+                            onUpdate: (self) => {
+                                const progress = self.progress;
+                                const scale = 1 - progress * 0.25;
+                                const rotation = (index % 2 === 0 ? 5 : -5) * progress;
+                                const afterOpacity = progress;
+
+                                gsap.set(card, {
+                                    scale: scale,
+                                    rotation: rotation,
+                                    "--after-opacity": afterOpacity,
+                                });
+                            },
+                        });
+                    }
+                });
             });
         }, container);
 

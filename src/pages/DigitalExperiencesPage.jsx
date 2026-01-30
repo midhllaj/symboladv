@@ -1,360 +1,138 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { CustomEase } from 'gsap/CustomEase';
-import './DigitalExperiencesPage.css';
-
-gsap.registerPlugin(CustomEase);
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from '../components/layout/Navbar';
 
 const DigitalExperiencesPage = () => {
-    const totalSlides = 2; // Only 2 slides now
-    const [currentSlide, setCurrentSlide] = useState(1);
-    const isAnimatingRef = useRef(false);
-    const scrollAllowedRef = useRef(true);
-    const lastScrollTimeRef = useRef(0);
-    const sliderRef = useRef(null);
-
-    const slideTitles = [
-        "REGALSPACES",
-        "DION POWER SOLUTIONS",
+    const projects = [
+        {
+            title: "REGALSPACES",
+            category: "Furniture",
+            image: "/digital-experiences/regal.jpeg",
+            description: "A sleek and functional digital platform for Regal Spaces, enhancing furniture discovery and shopping experience through intuitive design.",
+            link: "https://www.regalspaces.store/"
+        },
+        {
+            title: "GET BUSINESS SETUP",
+            category: "Business Services",
+            image: "/recent-project/get.png",
+            description: "A comprehensive digital platform for business setup services, streamlining the process for new entrepreneurs.",
+            link: "https://www.getbusinessetup.com/"
+        },
+        {
+            title: "E-WHEELS",
+            category: "ERP Solution",
+            image: "/recent-project/e-wheels.png",
+            description: "A specialized ERP solution for E-WHEELS, designed to optimize operations and management.",
+            link: "/erp-solutions"
+        },
+        {
+            title: "DION POWER SOLUTIONS",
+            category: "Power Solutions",
+            image: "/digital-experiences/dion.jpeg",
+            description: "A robust corporate website for Dion Power Solutions, communicating reliability and technical expertise in the energy sector.",
+            link: "https://www.dionpower.in/"
+        },
     ];
-
-    const slideDescriptions = [
-        "Real Estate",
-        "Power Solutions",
-    ];
-
-    const slideLinks = [
-        "https://www.regalspaces.store/",
-        "https://www.dionpower.in/",
-    ];
-
-    const slideImages = [
-        "/digital-experiences/regal.jpeg",
-        "/digital-experiences/dion.jpeg",
-    ];
-
-    const createSlide = (slideNumber, direction) => {
-        const slide = document.createElement("div");
-        slide.className = "slide";
-
-        const slideBgImg = document.createElement("div");
-        slideBgImg.className = "slide-bg-img";
-
-        const img = document.createElement("img");
-        img.src = slideImages[slideNumber - 1];
-        img.alt = "";
-
-        slideBgImg.appendChild(img);
-        slide.appendChild(slideBgImg);
-
-        if (direction === "down") {
-            slideBgImg.style.clipPath = "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
-        } else {
-            slideBgImg.style.clipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
-        }
-
-        return slide;
-    };
-
-    const createMainImageWrapper = (slideNumber, direction) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "slide-main-img-wrapper";
-
-        const link = slideLinks[slideNumber - 1];
-
-        if (link) {
-            const anchor = document.createElement("a");
-            anchor.href = link;
-            anchor.target = "_blank";
-            anchor.rel = "noopener noreferrer";
-
-            const img = document.createElement("img");
-            img.src = slideImages[slideNumber - 1];
-            img.alt = "";
-
-            anchor.appendChild(img);
-            wrapper.appendChild(anchor);
-        } else {
-            const img = document.createElement("img");
-            img.src = slideImages[slideNumber - 1];
-            img.alt = "";
-            wrapper.appendChild(img);
-        }
-
-        if (direction === "down") {
-            wrapper.style.clipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
-        } else {
-            wrapper.style.clipPath = "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
-        }
-
-        return wrapper;
-    };
-
-    const createTextElements = (slideNumber, direction) => {
-        const link = slideLinks[slideNumber - 1];
-
-        const newTitle = document.createElement("h1");
-        if (link) {
-            const anchor = document.createElement("a");
-            anchor.href = link;
-            anchor.target = "_blank";
-            anchor.rel = "noopener noreferrer";
-            anchor.style.textDecoration = "none";
-            anchor.style.color = "inherit";
-            anchor.textContent = slideTitles[slideNumber - 1];
-            newTitle.appendChild(anchor);
-        } else {
-            newTitle.textContent = slideTitles[slideNumber - 1];
-        }
-        gsap.set(newTitle, {
-            y: direction === "down" ? 50 : -50,
-        });
-
-        const newDescription = document.createElement("p");
-        newDescription.textContent = slideDescriptions[slideNumber - 1];
-        gsap.set(newDescription, {
-            y: direction === "down" ? 20 : -20,
-        });
-
-        return { newTitle, newDescription };
-    };
-
-    const animateSlide = (direction) => {
-        if (isAnimatingRef.current || !scrollAllowedRef.current) return;
-
-        isAnimatingRef.current = true;
-        scrollAllowedRef.current = false;
-
-        const slider = sliderRef.current;
-        const currentSlideElement = slider.querySelector(".slide");
-        const mainImageContainer = slider.querySelector(".slide-main-img");
-        const currentMainWrapper = mainImageContainer.querySelector(".slide-main-img-wrapper");
-
-        const titleContainer = slider.querySelector(".slide-title");
-        const descriptionContainer = slider.querySelector(".slide-description");
-
-        const currentTitle = titleContainer.querySelector("h1");
-        const currentDescription = descriptionContainer.querySelector("p");
-
-        let nextSlide;
-        if (direction === "down") {
-            nextSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
-        } else {
-            nextSlide = currentSlide === 1 ? totalSlides : currentSlide - 1;
-        }
-
-        const newSlide = createSlide(nextSlide, direction);
-        const newMainWrapper = createMainImageWrapper(nextSlide, direction);
-        const { newTitle, newDescription } = createTextElements(nextSlide, direction);
-
-        slider.appendChild(newSlide);
-        mainImageContainer.appendChild(newMainWrapper);
-        titleContainer.appendChild(newTitle);
-        descriptionContainer.appendChild(newDescription);
-
-        gsap.set(newMainWrapper.querySelector("img"), {
-            y: direction === "down" ? "-50%" : "50%",
-        });
-
-        const tl = gsap.timeline({
-            onComplete: () => {
-                [
-                    currentSlideElement,
-                    currentMainWrapper,
-                    currentTitle,
-                    currentDescription,
-                ].forEach((el) => el?.remove());
-
-                isAnimatingRef.current = false;
-                setCurrentSlide(nextSlide);
-                setTimeout(() => {
-                    scrollAllowedRef.current = true;
-                    lastScrollTimeRef.current = Date.now();
-                }, 100);
-            },
-        });
-
-        tl.to(
-            newSlide.querySelector(".slide-bg-img"),
-            {
-                clipPath:
-                    direction === "down"
-                        ? "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)"
-                        : "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-                duration: 1.25,
-                ease: CustomEase.create("", ".87,0,.13,1"),
-            },
-            0
-        )
-            .to(
-                currentSlideElement.querySelector("img"),
-                {
-                    scale: 1.5,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newMainWrapper,
-                {
-                    clipPath:
-                        direction === "down"
-                            ? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-                            : "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                currentMainWrapper.querySelector("img"),
-                {
-                    y: direction === "down" ? "50%" : "-50%",
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newMainWrapper.querySelector("img"),
-                {
-                    y: "0%",
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                currentTitle,
-                {
-                    y: direction === "down" ? -50 : 50,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newTitle,
-                {
-                    y: 0,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                currentDescription,
-                {
-                    y: direction === "down" ? -20 : 20,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newDescription,
-                {
-                    y: 0,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            );
-    };
-
-    useEffect(() => {
-        const handleScroll = (direction) => {
-            const now = Date.now();
-            if (isAnimatingRef.current || !scrollAllowedRef.current) return;
-            if (now - lastScrollTimeRef.current < 1000) return;
-            lastScrollTimeRef.current = now;
-            animateSlide(direction);
-        };
-
-        const handleWheel = (e) => {
-            e.preventDefault();
-            const direction = e.deltaY > 0 ? "down" : "up";
-            handleScroll(direction);
-        };
-
-        let touchStartY = 0;
-        let isTouchActive = false;
-
-        const handleTouchStart = (e) => {
-            touchStartY = e.touches[0].clientY;
-            isTouchActive = true;
-        };
-
-        const handleTouchMove = (e) => {
-            e.preventDefault();
-            if (!isTouchActive || isAnimatingRef.current || !scrollAllowedRef.current) return;
-            const touchCurrentY = e.touches[0].clientY;
-            const difference = touchStartY - touchCurrentY;
-            if (Math.abs(difference) > 10) {
-                isTouchActive = false;
-                const direction = difference > 0 ? "down" : "up";
-                handleScroll(direction);
-            }
-        };
-
-        const handleTouchEnd = () => {
-            isTouchActive = false;
-        };
-
-        window.addEventListener("wheel", handleWheel, { passive: false });
-        window.addEventListener("touchstart", handleTouchStart, { passive: false });
-        window.addEventListener("touchmove", handleTouchMove, { passive: false });
-        window.addEventListener("touchend", handleTouchEnd);
-
-        return () => {
-            window.removeEventListener("wheel", handleWheel);
-            window.removeEventListener("touchstart", handleTouchStart);
-            window.removeEventListener("touchmove", handleTouchMove);
-            window.removeEventListener("touchend", handleTouchEnd);
-        };
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="digital-experiences-page">
-            {/* Navigation */}
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-purple-500 selection:text-white">
+            <Navbar />
 
+            {/* Hero Section */}
+            <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
+                    Digital <br /> <span className="text-purple-600">Experiences</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                    Crafting digital ecosystems that connect brands with people through innovation, design, and technology.
+                </p>
+            </header>
 
-            {/* Slider */}
-            <div className="slider" ref={sliderRef}>
-                <div className="slide">
-                    <div className="slide-bg-img">
-                        <img src={slideImages[0]} alt="" />
+            {/* Why Symbol Section */}
+            <section className="py-20 bg-zinc-900">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                        <h2 className="text-sm font-bold uppercase tracking-widest text-purple-600 mb-4">Why Symbol</h2>
+                        <h3 className="text-3xl md:text-4xl font-bold mb-6">Digital First, Human Centric</h3>
+                    </div>
+                    <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+                        <p>
+                            In today's digital-first world, your online presence is often the first interaction a customer has with your brand. We don't just build websites; we create digital experiences that function as powerful business tools.
+                        </p>
+                        <p>
+                            Our digital solutions are built on a foundation of user-centric design and robust engineering. From immersive corporate websites to high-converting e-commerce platforms, we focus on speed, accessibility, and engagement to ensure your digital footprint leaves a lasting mark.
+                        </p>
                     </div>
                 </div>
+            </section>
 
-                <div className="slide-main-img">
-                    <div className="slide-main-img-wrapper">
-                        {slideLinks[0] ? (
-                            <a href={slideLinks[0]} target="_blank" rel="noopener noreferrer">
-                                <img src={slideImages[0]} alt="" />
-                            </a>
-                        ) : (
-                            <img src={slideImages[0]} alt="" />
-                        )}
-                    </div>
-                </div>
+            {/* Projects Showcase */}
+            <section className="py-24 px-6 max-w-7xl mx-auto">
+                <h2 className="text-4xl font-bold mb-16 border-b border-white/10 pb-8">Featured Projects</h2>
 
-                <div className="slide-copy">
-                    <div className="slide-title">
-                        {slideLinks[0] ? (
-                            <a href={slideLinks[0]} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <h1>{slideTitles[0]}</h1>
-                            </a>
-                        ) : (
-                            <h1>{slideTitles[0]}</h1>
-                        )}
-                    </div>
-                    <div className="slide-description">
-                        <p>{slideDescriptions[0]}</p>
-                    </div>
+                <div className="space-y-20">
+                    {projects.map((project, index) => (
+                        <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
+                            <div className={`overflow-hidden rounded-xl ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-xl">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                </a>
+                            </div>
+                            <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                                <span className="text-purple-600 font-medium tracking-wider text-sm uppercase mb-3 block">{project.category}</span>
+                                {project.link.startsWith('/') ? (
+                                    <Link to={project.link} className="group-hover:text-purple-600 transition-colors">
+                                        <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+                                    </Link>
+                                ) : (
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="group-hover:text-purple-600 transition-colors">
+                                        <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+                                    </a>
+                                )}
+                                <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                                    {project.description}
+                                </p>
+                                {project.link.startsWith('/') ? (
+                                    <Link
+                                        to={project.link}
+                                        className="text-purple-600 font-bold hover:underline inline-flex items-center"
+                                    >
+                                        Visit Website
+                                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </Link>
+                                ) : (
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-purple-600 font-bold hover:underline inline-flex items-center"
+                                    >
+                                        Visit Website
+                                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-24 bg-zinc-950 text-white text-center">
+                <div className="max-w-4xl mx-auto px-6">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to transform your digital presence?</h2>
+                    <p className="text-xl text-white/70 mb-10">
+                        Let's build a digital experience that drives results.
+                    </p>
+                    <a href="/#contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-full transition-colors duration-300">
+                        Start a Project
+                    </a>
+                </div>
+            </section>
         </div>
     );
 };

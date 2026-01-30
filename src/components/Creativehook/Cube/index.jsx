@@ -11,9 +11,8 @@ export default function CubeComponent({ rotation, xPos, yPos, className }) {
         <div className={className || "w-[400px] h-[400px] lg:w-[1400px] lg:h-[600px]"}>
             <Canvas camera={{ position: [0, 0, 50], fov: 45 }}>
                 <OrbitControls enableZoom={false} enablePan={false} />
-                <ambientLight intensity={0.5} color="#ffd700" />
-                <directionalLight position={[10, 10, 10]} intensity={2} color="#ffd700" />
-                <directionalLight position={[-10, -10, -10]} intensity={1} color="#ffaa00" />
+                <ambientLight intensity={0.5} />
+
                 <Environment preset="studio" />
 
                 {/* Visible Motion Path - Linear Zigzag */}

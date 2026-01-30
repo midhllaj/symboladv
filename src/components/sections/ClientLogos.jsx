@@ -35,8 +35,11 @@ const ClientLogos = () => {
         <section ref={sectionRef} className="py-24 bg-dark-charcoal text-white relative overflow-hidden border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
                 <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                    From field to field, <span className="text-primary-red">Symbol Advertising</span> covers it.
+                    Where ideas take shape and <span className="text-primary-red">brands take presence.</span>
                 </h3>
+                <p className="text-xl text-center text-gray-400 max-w-3xl mx-auto">
+                    Across industries and formats, Symbol Advertising designs and delivers signage solutions that balance creativity, structure, and lasting impact.
+                </p>
             </div>
 
             <div className="w-full overflow-hidden flex relative mask-linear-gradient">

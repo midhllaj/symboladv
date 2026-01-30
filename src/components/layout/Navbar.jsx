@@ -51,7 +51,7 @@ const Navbar = ({ menuActive, setMenuActive }) => {
     return (
         <nav
             ref={navRef}
-            className={`fixed ${isVisible ? 'top-4 md:top-6' : '-top-32'} left-1/2 -translate-x-1/2 z-[9999] transition-all duration-300 w-auto md:w-full md:max-w-5xl md:px-4`}
+            className={`fixed ${isVisible ? 'top-4 md:top-6' : '-top-32'} left-1/2 -translate-x-1/2 z-[10001] transition-all duration-300 w-auto md:w-full md:max-w-5xl md:px-4`}
         >
             <div
                 className={`${menuActive ? 'bg-transparent border-transparent' : 'bg-dark-charcoal/90 backdrop-blur-xl border-white/10 border'} rounded-full flex justify-between items-center shadow-2xl 
@@ -100,17 +100,17 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-64 bg-black border border-white/20 text-white p-2 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl">
                                     <div className="flex flex-col">
                                         {[
-                                            'Contacting & Exhibition',
-                                            'Signboard & Outdoor',
-                                            'Digital Experiences',
-                                            'Construction & Branding'
+                                            { name: 'Contacting & Exhibition', href: '/conferences' },
+                                            { name: 'Signboard & Outdoor', href: '/signboard' },
+                                            { name: 'Digital Experiences', href: '/digital-experiences' },
+                                            { name: 'Construction & Branding', href: '#' }
                                         ].map((item) => (
                                             <a
-                                                key={item}
-                                                href="/services"
+                                                key={item.name}
+                                                href={item.href}
                                                 className="block px-4 py-3 text-sm text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                                             >
-                                                {item}
+                                                {item.name}
                                             </a>
                                         ))}
                                     </div>

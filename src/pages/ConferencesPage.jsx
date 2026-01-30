@@ -1,317 +1,98 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { CustomEase } from 'gsap/CustomEase';
-import './ConferencesPage.css';
-
-gsap.registerPlugin(CustomEase);
+import React from 'react';
+import Navbar from '../components/layout/Navbar';
 
 const ConferencesPage = () => {
-    const totalSlides = 3;
-    const currentSlideRef = useRef(1);
-    const isAnimatingRef = useRef(false);
-    const scrollAllowedRef = useRef(true);
-    const lastScrollTimeRef = useRef(0);
-    const sliderRef = useRef(null);
-
-    const slideTitles = [
-        "JETEX",
-        "J.P.MORGAN",
-        "SKODA",
+    const projects = [
+        {
+            title: "JETEX",
+            category: "Aviation Services",
+            image: "/conferences/jetex.png",
+            description: "A premium exhibition experience designed for Jetex to showcase their luxury aviation services, featuring sleek lines and high-end finishes."
+        },
+        {
+            title: "J.P.MORGAN",
+            category: "Financial Services",
+            image: "/conferences/jpmorgan.jpg",
+            description: "A professional and authoritative booth design for J.P. Morgan, emphasizing trust and global connectivity in the financial sector."
+        },
+        {
+            title: "SKODA",
+            category: "Automotive",
+            image: "/conferences/skoda.jpg",
+            description: "Dynamic and engaging display for Skoda, highlighting innovation and automotive excellence through interactive elements and bold branding."
+        },
     ];
-
-    const slideDescriptions = [
-        "Aviation Services",
-        "Financial Services",
-        "Automotive",
-    ];
-
-    const slideImages = [
-        "/conferences/jetex.png",
-        "/conferences/jpmorgan.jpg",
-        "/conferences/skoda.jpg",
-    ];
-
-    const createSlide = (slideNumber, direction) => {
-        const slide = document.createElement("div");
-        slide.className = "slide";
-
-        const slideBgImg = document.createElement("div");
-        slideBgImg.className = "slide-bg-img";
-
-        const img = document.createElement("img");
-        img.src = slideImages[slideNumber - 1];
-        img.alt = "";
-
-        slideBgImg.appendChild(img);
-        slide.appendChild(slideBgImg);
-
-        if (direction === "down") {
-            slideBgImg.style.clipPath = "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
-        } else {
-            slideBgImg.style.clipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
-        }
-
-        return slide;
-    };
-
-    const createMainImageWrapper = (slideNumber, direction) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "slide-main-img-wrapper";
-
-        const img = document.createElement("img");
-        img.src = slideImages[slideNumber - 1];
-        img.alt = "";
-        wrapper.appendChild(img);
-
-        if (direction === "down") {
-            wrapper.style.clipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
-        } else {
-            wrapper.style.clipPath = "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
-        }
-
-        return wrapper;
-    };
-
-    const createTextElements = (slideNumber, direction) => {
-        const newTitle = document.createElement("h1");
-        newTitle.textContent = slideTitles[slideNumber - 1];
-        gsap.set(newTitle, {
-            y: direction === "down" ? 50 : -50,
-        });
-
-        const newDescription = document.createElement("p");
-        newDescription.textContent = slideDescriptions[slideNumber - 1];
-        gsap.set(newDescription, {
-            y: direction === "down" ? 20 : -20,
-        });
-
-        return { newTitle, newDescription };
-    };
-
-    const animateSlide = (direction) => {
-        if (isAnimatingRef.current || !scrollAllowedRef.current) return;
-
-        isAnimatingRef.current = true;
-        scrollAllowedRef.current = false;
-
-        const slider = sliderRef.current;
-        const currentSlideElement = slider.querySelector(".slide");
-        const mainImageContainer = slider.querySelector(".slide-main-img");
-        const currentMainWrapper = mainImageContainer.querySelector(".slide-main-img-wrapper");
-
-        const titleContainer = slider.querySelector(".slide-title");
-        const descriptionContainer = slider.querySelector(".slide-description");
-
-        const currentTitle = titleContainer.querySelector("h1");
-        const currentDescription = descriptionContainer.querySelector("p");
-
-        let nextSlide;
-        if (direction === "down") {
-            nextSlide = currentSlideRef.current === totalSlides ? 1 : currentSlideRef.current + 1;
-        } else {
-            nextSlide = currentSlideRef.current === 1 ? totalSlides : currentSlideRef.current - 1;
-        }
-
-        const newSlide = createSlide(nextSlide, direction);
-        const newMainWrapper = createMainImageWrapper(nextSlide, direction);
-        const { newTitle, newDescription } = createTextElements(nextSlide, direction);
-
-        slider.appendChild(newSlide);
-        mainImageContainer.appendChild(newMainWrapper);
-        titleContainer.appendChild(newTitle);
-        descriptionContainer.appendChild(newDescription);
-
-        gsap.set(newMainWrapper.querySelector("img"), {
-            y: direction === "down" ? "-50%" : "50%",
-        });
-
-        const tl = gsap.timeline({
-            onComplete: () => {
-                [
-                    currentSlideElement,
-                    currentMainWrapper,
-                    currentTitle,
-                    currentDescription,
-                ].forEach((el) => el?.remove());
-
-                isAnimatingRef.current = false;
-                currentSlideRef.current = nextSlide;
-                setTimeout(() => {
-                    scrollAllowedRef.current = true;
-                    lastScrollTimeRef.current = Date.now();
-                }, 100);
-            },
-        });
-
-        tl.to(
-            newSlide.querySelector(".slide-bg-img"),
-            {
-                clipPath:
-                    direction === "down"
-                        ? "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)"
-                        : "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-                duration: 1.25,
-                ease: CustomEase.create("", ".87,0,.13,1"),
-            },
-            0
-        )
-            .to(
-                currentSlideElement.querySelector("img"),
-                {
-                    scale: 1.5,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newMainWrapper,
-                {
-                    clipPath:
-                        direction === "down"
-                            ? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-                            : "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                currentMainWrapper.querySelector("img"),
-                {
-                    y: direction === "down" ? "50%" : "-50%",
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newMainWrapper.querySelector("img"),
-                {
-                    y: "0%",
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                currentTitle,
-                {
-                    y: direction === "down" ? -50 : 50,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newTitle,
-                {
-                    y: 0,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                currentDescription,
-                {
-                    y: direction === "down" ? -20 : 20,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            )
-            .to(
-                newDescription,
-                {
-                    y: 0,
-                    duration: 1.25,
-                    ease: CustomEase.create("", ".87,0,.13,1"),
-                },
-                0
-            );
-    };
-
-    useEffect(() => {
-        const handleScroll = (direction) => {
-            const now = Date.now();
-            if (isAnimatingRef.current || !scrollAllowedRef.current) return;
-            if (now - lastScrollTimeRef.current < 1000) return;
-            lastScrollTimeRef.current = now;
-            animateSlide(direction);
-        };
-
-        const handleWheel = (e) => {
-            e.preventDefault();
-            const direction = e.deltaY > 0 ? "down" : "up";
-            handleScroll(direction);
-        };
-
-        let touchStartY = 0;
-        let isTouchActive = false;
-
-        const handleTouchStart = (e) => {
-            touchStartY = e.touches[0].clientY;
-            isTouchActive = true;
-        };
-
-        const handleTouchMove = (e) => {
-            e.preventDefault();
-            if (!isTouchActive || isAnimatingRef.current || !scrollAllowedRef.current) return;
-            const touchCurrentY = e.touches[0].clientY;
-            const difference = touchStartY - touchCurrentY;
-            if (Math.abs(difference) > 10) {
-                isTouchActive = false;
-                const direction = difference > 0 ? "down" : "up";
-                handleScroll(direction);
-            }
-        };
-
-        const handleTouchEnd = () => {
-            isTouchActive = false;
-        };
-
-        window.addEventListener("wheel", handleWheel, { passive: false });
-        window.addEventListener("touchstart", handleTouchStart, { passive: false });
-        window.addEventListener("touchmove", handleTouchMove, { passive: false });
-        window.addEventListener("touchend", handleTouchEnd);
-
-        return () => {
-            window.removeEventListener("wheel", handleWheel);
-            window.removeEventListener("touchstart", handleTouchStart);
-            window.removeEventListener("touchmove", handleTouchMove);
-            window.removeEventListener("touchend", handleTouchEnd);
-        };
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="conferences-page">
-            {/* Navigation */}
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-primary-red selection:text-white">
+            <Navbar />
 
+            {/* Hero Section */}
+            <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
+                    Conferences & <br /> <span className="text-primary-red">Exhibition Experiences</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                    Creating immersive physical environments that tell your brand's story and engage audiences at every touchpoint.
+                </p>
+            </header>
 
-            {/* Slider */}
-            <div className="slider" ref={sliderRef}>
-                <div className="slide">
-                    <div className="slide-bg-img">
-                        <img src={slideImages[0]} alt="" />
+            {/* Why Symbol Section */}
+            <section className="py-20 bg-zinc-900">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                        <h2 className="text-sm font-bold uppercase tracking-widest text-primary-red mb-4">Why Symbol</h2>
+                        <h3 className="text-3xl md:text-4xl font-bold mb-6">Designed to Captivate</h3>
+                    </div>
+                    <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+                        <p>
+                            In the crowded landscape of exhibitions and conferences, standing out is not just an option—it's a necessity. We believe that a booth or pavilion is more than just a structure; it's a physical manifestation of your brand's identity and values.
+                        </p>
+                        <p>
+                            Our approach combines strategic design with expert craftsmanship. From concept to execution, we ensure every detail serves a purpose: to attract, engage, and leave a lasting impression on your visitors. Whether it's a massive trade show pavilion or an intimate conference setup, we bring your vision to life with precision and flair.
+                        </p>
                     </div>
                 </div>
+            </section>
 
-                <div className="slide-main-img">
-                    <div className="slide-main-img-wrapper">
-                        <img src={slideImages[0]} alt="" />
-                    </div>
-                </div>
+            {/* Projects Showcase */}
+            <section className="py-24 px-6 max-w-7xl mx-auto">
+                <h2 className="text-4xl font-bold mb-16 border-b border-white/10 pb-8">Featured Projects</h2>
 
-                <div className="slide-copy">
-                    <div className="slide-title">
-                        <h1>{slideTitles[0]}</h1>
-                    </div>
-                    <div className="slide-description">
-                        <p>{slideDescriptions[0]}</p>
-                    </div>
+                <div className="space-y-20">
+                    {projects.map((project, index) => (
+                        <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
+                            <div className={`overflow-hidden rounded-xl ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                            </div>
+                            <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                                <span className="text-primary-red font-medium tracking-wider text-sm uppercase mb-3 block">{project.category}</span>
+                                <h3 className="text-3xl font-bold mb-4 group-hover:text-primary-red transition-colors">{project.title}</h3>
+                                <p className="text-lg text-gray-300 leading-relaxed">
+                                    {project.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-24 bg-zinc-950 text-white text-center">
+                <div className="max-w-4xl mx-auto px-6">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to make an impact?</h2>
+                    <p className="text-xl text-white/70 mb-10">
+                        Let's discuss how we can elevate your next exhibition presence.
+                    </p>
+                    <a href="/#contact" className="inline-block bg-primary-red hover:bg-[#b03535] text-white font-bold py-4 px-10 rounded-full transition-colors duration-300">
+                        Get in Touch
+                    </a>
+                </div>
+            </section>
         </div>
     );
 };

@@ -12,6 +12,7 @@ import About from './pages/About';
 import DigitalExperiencesPage from './pages/DigitalExperiencesPage';
 import ConferencesPage from './pages/ConferencesPage';
 import SignboardPage from './pages/SignboardPage';
+import ErpSolutionPage from './pages/ErpSolutionPage';
 import Preloader from './components/Preloader';
 import GradientCursor from './components/GradientCursor/GradientCursor';
 
@@ -23,6 +24,7 @@ const AppLayout = () => {
   const isDigitalExperiences = location.pathname === '/digital-experiences';
   const isConferences = location.pathname === '/conferences';
   const isSignboard = location.pathname === '/signboard';
+  const isErpSolutions = location.pathname === '/erp-solutions';
 
   // Close menu on route change
   useEffect(() => {
@@ -43,8 +45,9 @@ const AppLayout = () => {
         <Route path="/digital-experiences" element={<DigitalExperiencesPage />} />
         <Route path="/conferences" element={<ConferencesPage />} />
         <Route path="/signboard" element={<SignboardPage />} />
+        <Route path="/erp-solutions" element={<ErpSolutionPage />} />
       </Routes>
-      {!isPortfolio && !isAbout && !isDigitalExperiences && !isConferences && !isSignboard && <Footer />}
+      {!isErpSolutions && <Footer />}
     </div>
   );
 };

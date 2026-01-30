@@ -22,6 +22,29 @@ const Hero = () => {
                     ease: "power3.out"
                 }
             );
+
+            // Exit animation on scroll
+            gsap.to(contentRef.current, {
+                y: -150,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1
+                }
+            });
+
+            // Scroll hint fade out
+            gsap.to(".scroll-hint", {
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "30% top",
+                    scrub: true
+                }
+            });
         }, containerRef);
 
         return () => ctx.revert();
@@ -54,7 +77,7 @@ const Hero = () => {
             {/* Content Layer */}
             <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center px-6 text-white">
                 <div ref={contentRef}>
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold uppercase tracking-tighter mb-6">
+                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold font-stardom uppercase tracking-tighter mb-6">
                         Start <br /> With Symbol
                     </h1>
                     <p className="text-lg md:text-2xl font-light max-w-2xl mx-auto uppercase tracking-wide">
@@ -63,7 +86,7 @@ const Hero = () => {
                 </div>
 
                 {/* Scroll Hint */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-sm uppercase tracking-widest opacity-50 animate-bounce">
+                <div className="scroll-hint absolute bottom-10 left-0 w-full text-center text-sm uppercase tracking-widest opacity-50 animate-bounce">
                     Scroll to Explore
                 </div>
             </div>

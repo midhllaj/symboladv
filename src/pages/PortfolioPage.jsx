@@ -119,10 +119,10 @@ const PortfolioPage = () => {
                     <h1 className="text-4xl md:text-5xl font-bold text-dark-charcoal mb-6">Our Portfolio</h1>
                     <div className="max-w-4xl mx-auto text-medium-grey leading-relaxed space-y-4">
                         <p>
-                            With the principle of valuing clients as the foundation of any business, Symbol Advertising has not only completed innovative and impressive structures but also gained reliable clients who have become key pillars of the brand. Since our establishment in 2000, we have successfully completed numerous projects that serve as a testament to our core values of delivering high-quality work, exceptional design, a commitment to on-time delivery and hassle-free installation processes.
+                            Built on the belief that strong client relationships drive lasting success, Symbol Advertising has been delivering impactful, innovative signage solutions since 1999. Our portfolio reflects a commitment to superior craftsmanship, refined design, timely delivery, and seamless installation.
                         </p>
                         <p>
-                            Our work showcases some of the brilliant signage pieces crafted from a variety of materials, including composite aluminum panels, stainless steel sheets, molded frames, glass films, <span className="text-primary-red font-medium">polymetal sheets</span>, acrylic structures, and more. With the help of these materials, we have been able to turn creative ideas into billboards, pylons, totems, <span className="text-primary-red font-medium">wall branding</span>, and standalone building facades that are well-known for our timely delivery and simple installation processes.
+                            Using premium materials such as aluminum composite panels, stainless steel, acrylic, glass films, and polymetal sheets, we transform creative concepts into iconic billboards, pylons, totems, wall branding, and architectural facades—crafted for precision, durability, and visual impact.
                         </p>
                     </div>
                 </div>

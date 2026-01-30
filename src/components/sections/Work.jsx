@@ -130,12 +130,12 @@ const Work = () => {
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Navigation Buttons (Desktop Hover) */}
-                <div className="absolute bottom-6 right-6 flex space-x-2 lg:hidden">
-                    <button onClick={prevProject} className="p-2 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-sm transition-colors">
+                {/* Navigation Buttons (Mobile - Centered Sides) */}
+                <div className="absolute inset-0 flex items-center justify-between px-4 lg:hidden z-20 pointer-events-none">
+                    <button onClick={prevProject} className="p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-sm transition-colors border border-white/10 pointer-events-auto">
                         <ChevronLeft size={24} />
                     </button>
-                    <button onClick={nextProject} className="p-2 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-sm transition-colors">
+                    <button onClick={nextProject} className="p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-sm transition-colors border border-white/10 pointer-events-auto">
                         <ChevronRight size={24} />
                     </button>
                 </div>

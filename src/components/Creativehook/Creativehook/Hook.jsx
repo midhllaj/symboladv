@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useScroll, useTransform, useSpring } from 'framer-motion';
+import { useScroll, useTransform, useSpring, motion } from 'framer-motion';
 import Cube from '../Cube';
 import Scroll from '../../Textscroll/Textscroll/Scroll';
 import TextScroll from '../../Textscroll/Textscroll/Textscroll';
@@ -68,9 +68,15 @@ export const Hook = () => {
       {/* Title Section - Reduced padding */}
       <div className="flex flex-col items-center text-center px-6 py-4">
         <div className="max-w-[1700px] w-full">
-          <h1 className="text-[12vw] md:text-[6vw] lg:text-[4.5vw] bg-gradient-to-r from-[#D64545] to-[#D64545] bg-clip-text text-transparent leading-tight" style={{ fontFamily: "'Francker Cyrillic Condensed Semibold', sans-serif" }}>
-            ABOUT SYMBOL ADVERTISING
-          </h1>
+          <motion.h1
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-[12vw] md:text-[6vw] lg:text-[4.5vw] font-stardom leading-tight text-white mb-4"
+          >
+            About <span className="text-[#D64545]">Symbol</span>
+          </motion.h1>
         </div>
       </div>
 

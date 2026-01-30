@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         clash: ['ClashDisplay-Variable', 'ClashDisplay-Regular', 'sans-serif'],
+        stardom: ['Stardom', 'sans-serif'],
       },
       colors: {
         'primary-red': '#D64545',

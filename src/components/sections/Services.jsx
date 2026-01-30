@@ -48,13 +48,16 @@ const Services = () => {
         const ctx = gsap.context(() => {
             // If desktop (min-width: 768px)
             if (window.innerWidth >= 768) {
-                gsap.to(horizontalContainerRef.current, {
-                    x: -3500, // Hardcoded large value to guarantee reaching the end
+                const scrollContainer = horizontalContainerRef.current;
+                const parentContainer = scrollContainer.parentElement;
+
+                gsap.to(scrollContainer, {
+                    x: () => -(scrollContainer.scrollWidth - parentContainer.clientWidth),
                     ease: "none",
                     scrollTrigger: {
                         trigger: triggerRef.current,
                         start: "top top",
-                        end: "+=1500", // Fixed distance for consistent, fast scroll
+                        end: "+=2000", // Adjusted for smoother scroll speed
                         scrub: 1,
                         pin: true,
                         invalidateOnRefresh: true,

@@ -56,12 +56,10 @@ const AboutClientLogos = () => {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        From field to field, <span className="text-primary-red">Gravity</span> covers it
+                        Where ideas take shape and <span className="text-primary-red">brands take presence.</span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        We're all about diversity of experience and we love a good niche. From aerospace and
-                        gaming to advanced tech, technology, and more, we're proud to produce
-                        noteworthy work across the board for our clients.
+                        Across industries and formats, Symbol Advertising designs and delivers signage solutions that balance creativity, structure, and lasting impact.
                     </p>
                 </div>
 

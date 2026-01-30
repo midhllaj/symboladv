@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-24 bg-black text-white">
+        <section id="contact" className="py-24 bg-black text-white scroll-mt-32">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
 
@@ -19,14 +19,14 @@ const Contact = () => {
                                 <div className="w-6 h-6 mr-4 bg-white/10 rounded-full flex-shrink-0"></div>
                                 <div>
                                     <p className="text-sm text-white/40 uppercase tracking-wider mb-1">Email</p>
-                                    <a href="mailto:hello@symbol.com" className="text-xl font-medium hover:text-primary-red transition-colors">hello@symbol.com</a>
+                                    <a href="mailto:symboladv66@gmail.com" className="text-xl font-medium hover:text-primary-red transition-colors">symboladv66@gmail.com</a>
                                 </div>
                             </div>
                             <div className="flex items-start">
                                 <div className="w-6 h-6 mr-4 bg-white/10 rounded-full flex-shrink-0"></div>
                                 <div>
                                     <p className="text-sm text-white/40 uppercase tracking-wider mb-1">Phone</p>
-                                    <a href="tel:+1234567890" className="text-xl font-medium hover:text-primary-red transition-colors">+1 (234) 567-890</a>
+                                    <a href="tel:+971509144500" className="text-xl font-medium hover:text-primary-red transition-colors">+971 50 914 4500</a>
                                 </div>
                             </div>
                             <div className="flex items-start">
