@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MoveUpRight } from 'lucide-react';
+import { MoveUpRight, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,7 @@ const servicesData = [
         title: 'Construction & Branding Infrastructure',
         description: 'We deliver end-to-end construction solutions that support and elevate brand presence in physical spaces.',
         image: '/services/construction.jpg',
-        link: '/portfolio' // Default to portfolio if no specific page
+        link: '/portfolio'
     },
 ];
 
@@ -41,6 +41,8 @@ const Services = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
     const horizontalContainerRef = useRef(null);
+    const mobileContainerRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -65,44 +67,61 @@ const Services = () => {
         return () => ctx.revert();
     }, []);
 
+    const handleMobileScroll = () => {
+        if (mobileContainerRef.current) {
+            const scrollLeft = mobileContainerRef.current.scrollLeft;
+            const width = mobileContainerRef.current.offsetWidth;
+            const index = Math.round(scrollLeft / width);
+            setActiveIndex(index);
+        }
+    };
+
+    const handleNext = () => {
+        if (mobileContainerRef.current) {
+            const width = mobileContainerRef.current.offsetWidth;
+            const nextIndex = (activeIndex + 1) % servicesData.length;
+            mobileContainerRef.current.scrollTo({
+                left: nextIndex * width,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <section ref={sectionRef} className="bg-black text-white relative overflow-hidden">
-            {/* Trigger element for pinning */}
-            <div ref={triggerRef} className="h-screen w-full flex flex-col md:flex-row overflow-hidden relative">
+            {/* Trigger element for pinning (Desktop) */}
+            <div ref={triggerRef} className="min-h-screen w-full flex flex-col md:flex-row overflow-hidden relative">
 
-                {/* Left Sticky Content */}
-                <div className="w-full md:w-[35vw] flex-shrink-0 flex flex-col justify-center px-8 md:px-16 z-10 bg-black/50 backdrop-blur-sm md:bg-black">
-                    <div className="mb-8">
-                        <h2 className="text-[#D64545] font-bold tracking-widest text-sm uppercase mb-6 flex items-center gap-4">
+                {/* Left Sticky Content / Mobile Header */}
+                <div className="w-full md:w-[35vw] flex-shrink-0 flex flex-col justify-center px-8 md:px-16 pt-12 md:pt-0 z-10 bg-black md:bg-black relative">
+                    <div className="mb-4 md:mb-8">
+                        <h2 className="text-[#D64545] font-bold tracking-widest text-xs md:text-sm uppercase mb-4 md:mb-6 flex items-center gap-4">
                             Our Expertise
-                            <span className="h-[1px] w-12 bg-[#D64545]"></span>
+                            <span className="h-[1px] w-8 md:w-12 bg-[#D64545]"></span>
                         </h2>
-                        <h3 className="text-5xl md:text-7xl font-bold leading-[0.9] text-white mb-8">
+                        <h3 className="text-4xl md:text-7xl font-bold leading-[0.9] text-white mb-6 md:mb-8">
                             Our Main <br />
                             Services
                         </h3>
-                        <p className="text-white/60 text-lg md:text-xl max-w-sm">
+                        <p className="text-white/60 text-lg md:text-xl max-w-sm hidden md:block">
                             From ideas to impact, we craft powerful moments that stop the scroll and start conversations.
                         </p>
                     </div>
-                    {/* Hint for scrolling */}
+                    {/* Hint for scrolling (Desktop) */}
                     <div className="hidden md:flex items-center gap-2 text-white/40 text-sm mt-12 animate-pulse">
                         <span>SCROLL TO EXPLORE</span>
                         <MoveUpRight className="rotate-45" size={16} />
                     </div>
                 </div>
 
-                {/* Right Horizontal Scroll Container */}
-                <div
-                    className="flex-1 flex items-center h-full overflow-x-auto md:overflow-x-visible no-scrollbar pl-8 md:pl-0"
-
-                >
-                    <div ref={horizontalContainerRef} className="flex gap-8 md:gap-20 px-4 md:px-0 flex-nowrap h-[60vh] md:h-[70vh] items-center">
+                {/* Desktop Horizontal Scroll Container */}
+                <div className="hidden md:flex flex-1 items-center h-full overflow-hidden pl-0">
+                    <div ref={horizontalContainerRef} className="flex gap-20 px-0 flex-nowrap h-[70vh] items-center">
                         {servicesData.map((service) => (
                             <Link
-                                to={service.link}
                                 key={service.id}
-                                className="group relative w-[80vw] md:w-[600px] h-full flex-shrink-0 bg-[#0a0a0a] border border-white/10 hover:border-[#D64545]/50 transition-all duration-500 overflow-hidden"
+                                to={service.link}
+                                className="group relative w-[600px] h-full flex-shrink-0 bg-[#0a0a0a] border border-white/10 hover:border-[#D64545]/50 transition-all duration-500 overflow-hidden"
                             >
                                 <div className="h-[60%] overflow-hidden relative">
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all z-10" />
@@ -129,10 +148,77 @@ const Services = () => {
                                 </div>
                             </Link>
                         ))}
-                        {/* Spacer for end of scroll */}
-                        <div className="w-[10vw] flex-shrink-0"></div>
                     </div>
                 </div>
+
+                {/* Mobile Scroll Container */}
+                <div className="md:hidden w-full flex-1 flex flex-col pb-12">
+                    <div
+                        ref={mobileContainerRef}
+                        onScroll={handleMobileScroll}
+                        className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar w-full h-[60vh]"
+                    >
+                        {servicesData.map((service) => (
+                            <div key={service.id} className="w-full flex-shrink-0 snap-center px-4 h-full">
+                                <Link to={service.link} className="block w-full h-full bg-[#111] relative overflow-hidden group">
+                                    {/* Image Top */}
+                                    <div className="h-[55%] w-full overflow-hidden relative">
+                                        <div className="absolute inset-0 bg-black/10 z-10" />
+                                        <img
+                                            src={service.image}
+                                            alt={service.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    {/* Content Bottom */}
+                                    <div className="h-[45%] p-6 flex flex-col justify-center relative">
+                                        <h4 className="text-3xl font-bold mb-3 text-white leading-tight">
+                                            {service.title}
+                                        </h4>
+                                        <p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-3 pr-20">
+                                            {service.description}
+                                        </p>
+
+                                        {/* Large Arrow Button */}
+                                        <div
+                                            className="absolute bottom-6 right-6 w-12 h-12 bg-transparent border border-white/30 rounded-full flex items-center justify-center text-white"
+                                        >
+                                            <MoveUpRight size={20} />
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Mobile Pagination & Navigation */}
+                    <div className="px-8 mt-6 flex flex-col gap-4">
+                        {/* Progress Bars */}
+                        <div className="flex gap-2 w-full">
+                            {servicesData.map((_, idx) => (
+                                <div
+                                    key={idx}
+                                    className={`h-[2px] flex-1 transition-colors duration-300 ${activeIndex === idx ? 'bg-white' : 'bg-white/20'}`}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Footer Controls */}
+                        <div className="flex justify-between items-end">
+                            <span className="text-white font-mono text-lg">
+                                {activeIndex + 1} <span className="text-white/40">|</span> {servicesData.length}
+                            </span>
+
+                            <button
+                                onClick={handleNext}
+                                className="w-14 h-14 bg-transparent border border-white/50 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                            >
+                                <ArrowRight size={24} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     );

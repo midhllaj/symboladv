@@ -39,4 +39,20 @@
 
         }
     }
+
+    @media (max-width: 768px) {
+        .body {
+            padding: 40px;
+
+            .nav {
+                font-size: 32px;
+                gap: 8px;
+                margin-top: 40px;
+
+                .header {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
 }
