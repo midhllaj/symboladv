@@ -99,7 +99,7 @@ const Work = () => {
     return (
         <section
             id="work"
-            className="relative h-screen bg-black text-white overflow-hidden flex flex-col lg:flex-row"
+            className="relative h-auto lg:h-screen bg-black text-white overflow-hidden flex flex-col lg:flex-row"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -142,7 +142,7 @@ const Work = () => {
             </div>
 
             {/* RIGHT SIDE: CONTENT */}
-            <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex flex-col justify-center px-8 pt-24 pb-24 lg:px-24 lg:py-0 bg-black relative z-10">
+            <div className="w-full lg:w-1/2 h-auto min-h-[50vh] lg:h-full flex flex-col justify-center px-8 py-20 lg:px-24 lg:py-0 bg-black relative z-10">
                 <div className="max-w-xl">
                     <motion.div
                         key={currentIndex}
