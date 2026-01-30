@@ -1,0 +1,54 @@
+/* .header class removed or commented out as it is no longer the parent wrapper for the button in Navbar */
+
+.button {
+    width: 40px;
+    /* Adapted for Navbar */
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    /* Removed blue */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 110;
+}
+
+.burger {
+    width: 100%;
+
+    &::after,
+    &::before {
+        content: "";
+        display: block;
+        height: 1px;
+        /* Thinner lines */
+        width: 60%;
+        /* Wider lines relative to container */
+        margin: auto;
+        background-color: white;
+        position: relative;
+        transition: transform 0.3s;
+    }
+
+    &::after {
+        top: -4px;
+    }
+
+    &::before {
+        top: 4px;
+    }
+}
+
+.burgerActive {
+    &::after {
+        transform: rotate(45deg);
+        top: -1px;
+    }
+
+    &::before {
+        transform: rotate(-45deg);
+        top: 0px;
+    }
+}

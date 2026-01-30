@@ -1,0 +1,24 @@
+.trail-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    /* Ensure it doesn't block interactions if needed, or maybe it should be the background? */
+    /* For now, let's make it a container that sits behind content or holds the content */
+}
+
+.trail-img {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    /* Changed to rectangular portrait based on typical portfolio look, or keep square? Template was 200x200. Let's stick to template first then adjust if needed. */
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    transform-origin: center;
+    pointer-events: none;
+    will-change: transform;
+    z-index: 10;
+    /* Ensure above background but below important UI if needed */
+}

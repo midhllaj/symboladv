@@ -1,0 +1,134 @@
+import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './StickyCards.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const StickyCards = () => {
+    const stickyCardsData = [
+        {
+            index: "01",
+            title: "Conferences & Exhibition Experience",
+            image: "/services/conferences.png",
+            description: "Immersive environments for your biggest events. We design spaces that don't just host people, but transport them into unforgettable brand experiences.",
+        },
+        {
+            index: "02",
+            title: "Signboard & Outdoor Branding",
+            image: "/services/signboard.jpg",
+            description: "High-impact physical branding that stands out day and night. Precision engineering meets creative design for maximum visibility.",
+        },
+        {
+            index: "03",
+            title: "Digital Experience",
+            image: "/services/digital.jpeg",
+            description: "Websites, apps, and digital touchpoints that are intuitive, engaging, and perfectly aligned with your brand identity.",
+        },
+        {
+            index: "04",
+            title: "Construction & Brand Infrastructure",
+            image: "/services/construction.jpg",
+            description: "Full-scale structural branding and setups. We bridge the gap between creative vision and physical reality with expert execution.",
+        },
+    ];
+
+    const container = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const stickyCards = document.querySelectorAll(".sticky-card");
+
+            stickyCards.forEach((card, index) => {
+                // Pin all cards except the last one
+                if (index < stickyCards.length - 1) {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: "top top",
+                        endTrigger: stickyCards[stickyCards.length - 1],
+                        end: "top top",
+                        pin: true,
+                        pinSpacing: false,
+                    });
+                }
+
+                // Animate scale, rotation, and overlay for all cards except the last one
+                if (index < stickyCards.length - 1) {
+                    ScrollTrigger.create({
+                        trigger: stickyCards[index + 1],
+                        start: "top bottom",
+                        end: "top top",
+                        onUpdate: (self) => {
+                            const progress = self.progress;
+                            const scale = 1 - progress * 0.25; // Scale from 1 to 0.75
+                            const rotation = (index % 2 === 0 ? 5 : -5) * progress; // Alternate rotation
+                            const afterOpacity = progress; // Overlay opacity from 0 to 1
+
+                            gsap.set(card, {
+                                scale: scale,
+                                rotation: rotation,
+                                "--after-opacity": afterOpacity,
+                            });
+                        },
+                    });
+                }
+            });
+        }, container);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <div className="sticky-cards" ref={container}>
+            {stickyCardsData.map((cardData, index) => {
+                const isConferences = cardData.index === "01";
+                const isSignboard = cardData.index === "02";
+                const isDigitalExp = cardData.index === "03";
+                const CardWrapper = (isConferences || isSignboard || isDigitalExp) ? Link : 'div';
+
+                let wrapperProps = {};
+                if (isConferences) {
+                    wrapperProps = { to: '/conferences' };
+                } else if (isSignboard) {
+                    wrapperProps = { to: '/signboard' };
+                } else if (isDigitalExp) {
+                    wrapperProps = { to: '/digital-experiences' };
+                }
+
+                return (
+                    <CardWrapper
+                        className="sticky-card"
+                        key={index}
+                        {...wrapperProps}
+                        style={{ cursor: (isConferences || isSignboard || isDigitalExp) ? 'pointer' : 'default' }}
+                    >
+                        <div className="sticky-card-index">
+                            <h1>{cardData.index}</h1>
+                        </div>
+                        <div className="sticky-card-content">
+                            <div className="sticky-card-content-wrapper">
+                                <h1 className="sticky-card-header">{cardData.title}</h1>
+
+                                <div className="sticky-card-img">
+                                    <img src={cardData.image} alt={cardData.title} />
+                                </div>
+
+                                <div className="sticky-card-copy">
+                                    <div className="sticky-card-copy-title">
+                                        <p>(About the service)</p>
+                                    </div>
+                                    <div className="sticky-card-copy-description">
+                                        <p>{cardData.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </CardWrapper>
+                );
+            })}
+        </div>
+    );
+};
+
+export default StickyCards;

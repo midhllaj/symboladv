@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  
+  // Responsive layout adjustments
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+.plaan{
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+align-items: center;
+background-color: black;
+}
+.head{
+
+    font-size: 10vw;
+    background: linear-gradient(to right, #f90 0.03%, #f24822 97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Criteriacf', sans-serif;
+}

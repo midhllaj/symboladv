@@ -1,0 +1,142 @@
+.sticky-cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #F4F4F4;
+}
+
+.sticky-card {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    background-color: #2B2B2B;
+    color: #F4F4F4;
+    padding: 1.5rem;
+    display: flex;
+    gap: 3rem;
+    will-change: transform;
+}
+
+.sticky-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: var(--after-opacity, 0);
+    transition: opacity 0.1s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sticky-card-index {
+    flex: 2;
+}
+
+.sticky-card-index h1 {
+    font-size: 7rem;
+    font-weight: 800;
+    letter-spacing: -0.35rem;
+    line-height: 1.1;
+    color: #D64545;
+}
+
+.sticky-card-content {
+    flex: 4;
+    padding-top: 1.5rem;
+}
+
+.sticky-card-content-wrapper {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sticky-card-header {
+    width: 75%;
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.2rem;
+    line-height: 1.1;
+    color: #FFFFFF;
+}
+
+.sticky-card-img {
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.sticky-card-img img {
+    aspect-ratio: 5/3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sticky-card-copy {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.sticky-card-copy-title {
+    flex: 2;
+}
+
+.sticky-card-copy-description {
+    flex: 4;
+}
+
+.sticky-card-copy-title p {
+    text-transform: uppercase;
+    font-weight: 650;
+    font-size: 0.875rem;
+    color: #D64545;
+    letter-spacing: 0.05em;
+}
+
+.sticky-card-copy-description p {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #F4F4F4;
+}
+
+@media (max-width: 1000px) {
+    .sticky-card {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem;
+    }
+
+    .sticky-card-index h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0;
+    }
+
+    .sticky-card-header {
+        font-size: 2rem;
+        letter-spacing: 0;
+        width: 100%;
+    }
+
+    .sticky-card-content-wrapper {
+        width: 100%;
+    }
+
+    .sticky-card-copy {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sticky-card-index {
+        flex: 1;
+    }
+
+    .sticky-card-copy-description p {
+        font-size: 1rem;
+    }
+}
