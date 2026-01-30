@@ -50,7 +50,18 @@ export const Hook = () => {
 
   // Y position - refined with keyframes to control height at each section
   // Section 1: 4 (Lowered from 10) -> Section 2: 0 -> Section 3: -10 (More down at end as requested)
-  const yPosition = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [4, 4, 0, 0, -10]);
+  const yDesktopValues = [4, 4, 0, 0, -10];
+  // Mobile Y values (Three.js coords: +Y is Up, -Y is Down):
+  // Start: Below "Who We Are" stats -> -12 (Little up from -18)
+  // Middle: Between "Vision" and "Mission" -> 0 (Center)
+  // End: Below "Mission" (Raised slightly more) -> -14.5
+  const yMobileValues = [-12, -12, 0, 0, -14.5];
+
+  const yPosition = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.5, 0.7, 1],
+    isMobile ? yMobileValues : yDesktopValues
+  );
 
   return (
     <div ref={containerRef} className="relative bg-dark-charcoal">
@@ -64,7 +75,10 @@ export const Hook = () => {
       </div>
 
       {/* Alternating Layout Container - 3 sections */}
-      <div className="relative w-full max-w-[1400px] mx-auto min-h-[200vh]">
+      <div
+        className="relative w-full max-w-[1400px] mx-auto"
+        style={{ minHeight: isMobile ? '1200px' : '200vh' }}
+      >
 
         {/* 3D Star - Sticky and animated */}
         <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none z-10">
@@ -91,7 +105,7 @@ export const Hook = () => {
           </div>
 
           {/* Section 3: Mission (Left side) - 3D on Right */}
-          <div className="flex min-h-[40vh] lg:min-h-[65vh]">
+          <div className="flex min-h-[30vh] lg:min-h-[65vh]">
             <div className="w-full lg:w-1/2 flex items-center justify-center px-4 lg:px-8">
               <TextScroll />
             </div>

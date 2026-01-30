@@ -10,4 +10,10 @@
         color: white;
         text-decoration: none;
     }
+
+    @media (max-width: 768px) {
+        gap: 10px;
+        flex-wrap: wrap;
+        /* Ensure it wraps if it still overflows */
+    }
 }

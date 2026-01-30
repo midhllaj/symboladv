@@ -14,7 +14,7 @@ const projects = [
     },
     {
         id: 2,
-        title: 'E-WHEELS ERP SYSTEM',
+        title: 'E-WHEELS ERP',
         description: 'Custom ERP solution developed for E-Wheels across web and mobile platforms, designed to optimize operations, improve efficiency, and centralize business management.',
         image: '/recent-project/e-wheels.png',
         category: 'BUSINESS SETUP',
@@ -30,7 +30,7 @@ const projects = [
     },
     {
         id: 4,
-        title: 'JETX EXHIBITION INSTALLATION',
+        title: 'JETX',
         description: 'Custom exhibition installation developed for JetX in Dubai.\nA full-scale aircraft display designed to create strong visual impact and elevate brand engagement within a live exhibition environment',
         image: '/recent-project/ject.png',
         category: 'BUSINESS SETUP',
@@ -167,7 +167,8 @@ const Work = () => {
                         <div className="flex items-center justify-between">
                             <Link
                                 to={projects[currentIndex].link}
-                                className="inline-flex items-center gap-2 text-white hover:text-[#D64545] transition-colors text-lg font-medium group"
+                                style={{ textDecoration: 'none', border: 'none', backgroundImage: 'none', boxShadow: 'none' }}
+                                className="inline-flex items-center gap-2 text-white hover:text-[#D64545] transition-colors text-lg font-medium group no-underline decoration-0 appearance-none bg-transparent border-none outline-none"
                             >
                                 View Project
                                 <ArrowUpRight className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -191,15 +192,16 @@ const Work = () => {
                         </div>
                     </motion.div>
 
-                    {/* Pagination Indicator */}
-                    <div className="absolute bottom-12 left-8 lg:left-24 flex space-x-2">
-                        {projects.map((_, idx) => (
-                            <div
-                                key={idx}
-                                className={`h-1 transition-all duration-300 ${idx === currentIndex ? 'w-8 bg-[#D64545]' : 'w-2 bg-white/20'}`}
-                            />
-                        ))}
-                    </div>
+                </div>
+
+                {/* Pagination Indicator */}
+                <div className="relative mt-12 lg:absolute lg:bottom-12 lg:mt-0 left-0 lg:left-24 flex space-x-2">
+                    {projects.map((_, idx) => (
+                        <div
+                            key={idx}
+                            className={`h-1 transition-all duration-300 ${idx === currentIndex ? 'w-8 bg-[#D64545]' : 'w-2 bg-white/20'}`}
+                        />
+                    ))}
                 </div>
             </div>
         </section>

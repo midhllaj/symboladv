@@ -108,8 +108,9 @@
 @media (max-width: 1000px) {
     .sticky-card {
         flex-direction: column;
-        gap: 0;
-        padding: 1rem;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        box-sizing: border-box;
     }
 
     .sticky-card-index h1 {
@@ -121,19 +122,29 @@
         font-size: 2rem;
         letter-spacing: 0;
         width: 100%;
+        line-height: 1.2;
     }
 
     .sticky-card-content-wrapper {
         width: 100%;
+        gap: 1rem;
     }
 
     .sticky-card-copy {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .sticky-card-index {
+        flex: 0;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .sticky-card-content {
         flex: 1;
+        padding-top: 0;
+        width: 100%;
     }
 
     .sticky-card-copy-description p {

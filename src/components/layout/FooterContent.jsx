@@ -28,7 +28,7 @@ const Section2 = () => {
 
 const Nav = () => {
     return (
-        <div className='flex shrink-0 gap-20'>
+        <div className='grid grid-cols-2 md:flex md:flex-row gap-10 md:gap-20'>
             <div className='flex flex-col gap-2'>
                 <h3 className='mb-2 uppercase text-[#ffffff80]'>Navigation</h3>
                 <a href="/" className="text-white hover:underline">Home</a>

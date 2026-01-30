@@ -8,4 +8,8 @@
     stroke: none;
     pointer-events: none;
     /* Let clicks pass through if needed, though usually it's background */
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 }

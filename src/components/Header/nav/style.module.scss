@@ -1,10 +1,11 @@
 .menu {
-    height: 100vh;
+    height: 100dvh;
     background-color: rgb(41, 41, 41);
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 90;
+    z-index: 10000;
+    max-width: 100%;
     /* Below button but above content */
     color: white;
 
@@ -41,6 +42,8 @@
     }
 
     @media (max-width: 768px) {
+        width: 100%;
+
         .body {
             padding: 40px;
 
