@@ -142,7 +142,7 @@ const Work = () => {
             </div>
 
             {/* RIGHT SIDE: CONTENT */}
-            <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex flex-col justify-center px-8 lg:px-24 bg-black relative z-10">
+            <div className="w-full lg:w-1/2 h-[50vh] lg:h-full flex flex-col justify-center px-8 pt-24 pb-24 lg:px-24 lg:py-0 bg-black relative z-10">
                 <div className="max-w-xl">
                     <motion.div
                         key={currentIndex}
