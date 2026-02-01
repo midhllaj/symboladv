@@ -6,8 +6,8 @@ const ServicesPage = () => {
         <div className="bg-light-grey">
             {/* Intro Section */}
             <section
-                className="relative w-full h-screen bg-cover bg-center bg-no-repeat text-white flex justify-center items-center text-center"
-                style={{ backgroundImage: "url('/services-intro-bg.jpg')" }}
+                className="relative w-full h-[50vh] bg-cover bg-center bg-no-repeat text-white flex justify-center items-center text-center"
+                style={{ backgroundImage: "url('/services/hot-air-balloon-adventure-2.jpg')" }}
             >
                 <div className="max-w-4xl px-6">
                     <div className="inline-block mb-6 px-4 py-2 bg-primary-red/10 border border-primary-red/30 rounded-full">

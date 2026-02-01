@@ -70,7 +70,7 @@ const Hero = () => {
                     muted
                     loop
                     playsInline
-                    src="/assets/video/mobile.mp4"
+                    src="/assets/mobile-hero.mp4"
                 />
             </div>
 

@@ -39,14 +39,14 @@ const Nav = () => {
             </div>
             <div className='flex flex-col gap-2'>
                 <h3 className='mb-2 uppercase text-[#ffffff80]'>Services</h3>
-                <p className="text-white">Branding</p>
-                <p className="text-white">Web Design</p>
-                <p className="text-white">Marketing</p>
-                <p className="text-white">Development</p>
+                <a href="/conferences" className="text-white hover:underline">Contacting & Exhibition</a>
+                <a href="/signboard" className="text-white hover:underline">Signboard & Outdoor</a>
+                <a href="/digital-experiences" className="text-white hover:underline">Digital Experiences</a>
+                <a href="#" className="text-white hover:underline">Construction & Branding</a>
             </div>
             <div className='flex flex-col gap-2'>
                 <h3 className='mb-2 uppercase text-[#ffffff80]'>Connect</h3>
-                <p className="text-white">Instagram</p>
+                <a href="https://www.instagram.com/symboladvertising/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">Instagram</a>
                 <p className="text-white">LinkedIn</p>
                 <p className="text-white">Twitter</p>
             </div>

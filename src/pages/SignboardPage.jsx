@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/layout/Navbar';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SignboardPage = () => {
+    const heroDescRef = useRef(null);
+    const whyDescRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero Description Animation
+            gsap.from(heroDescRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: "power3.out"
+            });
+
+            // Why Symbol Description Animation
+            gsap.from(whyDescRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: whyDescRef.current,
+                    start: "top 85%",
+                }
+            });
+        });
+        return () => ctx.revert();
+    }, []);
     const projects = [
         {
             title: "NBF BANK",
@@ -89,10 +120,10 @@ const SignboardPage = () => {
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-                    Signboard & <br /> <span className="text-primary-red">Outdoor Branding</span>
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-primary-red">
+                    Signboard & <br /> Outdoor Branding
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                <p ref={heroDescRef} className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
                     Making your brand visible, memorable, and impactful in the physical world through precision-crafted signage.
                 </p>
             </header>
@@ -104,7 +135,7 @@ const SignboardPage = () => {
                         <h2 className="text-sm font-bold uppercase tracking-widest text-primary-red mb-4">Why Symbol</h2>
                         <h3 className="text-3xl md:text-4xl font-bold mb-6">Mastery in Visibility</h3>
                     </div>
-                    <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+                    <div ref={whyDescRef} className="text-lg text-gray-300 leading-relaxed space-y-6">
                         <p>
                             A signboard is often the first handshake between your business and a potential customer. It needs to be more than just visible; it needs to be impactful. At Symbol, we understand the art and science of outdoor branding.
                         </p>

@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const DigitalExperiencesPage = () => {
+    const heroDescRef = useRef(null);
+    const whyDescRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero Description Animation
+            gsap.from(heroDescRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: "power3.out"
+            });
+
+            // Why Symbol Description Animation
+            gsap.from(whyDescRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: whyDescRef.current,
+                    start: "top 85%",
+                }
+            });
+        });
+        return () => ctx.revert();
+    }, []);
     const projects = [
         {
             title: "REGALSPACES",
@@ -40,10 +71,10 @@ const DigitalExperiencesPage = () => {
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-                    Digital <br /> <span className="text-purple-600">Experiences</span>
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-purple-600">
+                    Digital <br /> Experiences
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                <p ref={heroDescRef} className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
                     Crafting digital ecosystems that connect brands with people through innovation, design, and technology.
                 </p>
             </header>
@@ -55,7 +86,7 @@ const DigitalExperiencesPage = () => {
                         <h2 className="text-sm font-bold uppercase tracking-widest text-purple-600 mb-4">Why Symbol</h2>
                         <h3 className="text-3xl md:text-4xl font-bold mb-6">Digital First, Human Centric</h3>
                     </div>
-                    <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+                    <div ref={whyDescRef} className="text-lg text-gray-300 leading-relaxed space-y-6">
                         <p>
                             In today's digital-first world, your online presence is often the first interaction a customer has with your brand. We don't just build websites; we create digital experiences that function as powerful business tools.
                         </p>

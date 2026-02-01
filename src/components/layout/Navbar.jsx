@@ -54,9 +54,9 @@ const Navbar = ({ menuActive, setMenuActive }) => {
             className={`fixed ${isVisible ? 'top-4 md:top-6' : '-top-32'} left-1/2 -translate-x-1/2 z-[10001] transition-all duration-300 w-auto md:w-full md:max-w-5xl md:px-4`}
         >
             <div
-                className={`${menuActive ? 'bg-transparent border-transparent' : 'bg-dark-charcoal/90 backdrop-blur-xl border-white/10 border'} rounded-full flex justify-between items-center shadow-2xl 
+                className={`${menuActive ? 'bg-transparent border-transparent' : 'bg-black/30 backdrop-blur-2xl border-white/10 border backdrop-saturate-150 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)]'} rounded-full flex justify-between items-center 
                 w-[408.5px] h-[66px] max-w-[95vw] px-6
-                md:w-full md:h-auto md:px-8 md:py-4 transition-colors duration-300`}
+                md:w-full md:h-auto md:px-8 md:py-4 transition-all duration-300`}
             >
 
                 {/* Logo */}
@@ -89,8 +89,8 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                                         }
                                     }
                                 }}
-                                // Stylized link: White/60 transparent, white on hover, Active color simulation
-                                className="text-sm font-medium transition-colors duration-300 text-white/60 hover:text-white"
+                                // Stylized link: White/60 transparent, red on hover
+                                className="text-sm font-medium transition-colors duration-300 text-white/60 hover:text-primary-red"
                             >
                                 {link.name}
                             </a>
@@ -108,7 +108,7 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                                             <a
                                                 key={item.name}
                                                 href={item.href}
-                                                className="block px-4 py-3 text-sm text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                                                className="block px-4 py-3 text-sm text-white/60 hover:text-primary-red hover:bg-white/10 rounded-lg transition-colors"
                                             >
                                                 {item.name}
                                             </a>

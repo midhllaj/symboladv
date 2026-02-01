@@ -48,6 +48,25 @@ const AboutCompany = () => {
                 }
             });
 
+            // Count Animation
+            const stats = statsRef.current.querySelectorAll('.count-stat');
+            stats.forEach((stat, index) => {
+                const targetVal = index === 0 ? 25 : 500;
+                const obj = { val: 0 };
+                gsap.to(obj, {
+                    val: targetVal,
+                    duration: 2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: statsRef.current,
+                        start: "top 85%",
+                    },
+                    onUpdate: () => {
+                        stat.textContent = Math.floor(obj.val) + "+";
+                    }
+                });
+            });
+
             // Mission/Vision Cards Animation
             gsap.from(cardsRef.current.children, {
                 x: 50,
@@ -85,19 +104,17 @@ const AboutCompany = () => {
                         <p>
                             Symbol Advertising is a full-service advertising agency committed to crafting powerful brand experiences. Since 1999, we have partnered with businesses to create visually striking, strategically sound, and result-driven advertising solutions.
                         </p>
-                        <p className="text-white font-normal border-l-2 border-blue-500 pl-6 py-2">
-                            We believe great advertising is not loud — it’s memorable.
-                        </p>
+
                     </div>
 
                     {/* Stats */}
                     <div ref={statsRef} className="flex gap-12 pt-8 border-t border-white/10">
                         <div>
-                            <span className="block text-4xl md:text-5xl font-bold text-white mb-1">25+</span>
+                            <span className="block text-4xl md:text-5xl font-bold text-white mb-1 count-stat">0+</span>
                             <span className="text-sm uppercase tracking-wider text-gray-500">Years Experience</span>
                         </div>
                         <div>
-                            <span className="block text-4xl md:text-5xl font-bold text-white mb-1">500+</span>
+                            <span className="block text-4xl md:text-5xl font-bold text-white mb-1 count-stat">0+</span>
                             <span className="text-sm uppercase tracking-wider text-gray-500">Clients Trust Us</span>
                         </div>
                     </div>

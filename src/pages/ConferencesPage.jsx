@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/layout/Navbar';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ConferencesPage = () => {
+    const heroDescRef = useRef(null);
+    const whyDescRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero Description Animation
+            gsap.from(heroDescRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: "power3.out"
+            });
+
+            // Why Symbol Description Animation
+            gsap.from(whyDescRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: whyDescRef.current,
+                    start: "top 85%",
+                }
+            });
+        });
+        return () => ctx.revert();
+    }, []);
     const projects = [
         {
             title: "JETEX",
@@ -29,10 +60,10 @@ const ConferencesPage = () => {
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-                    Conferences & <br /> <span className="text-primary-red">Exhibition Experiences</span>
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-primary-red">
+                    Conferences & <br /> Exhibition Experiences
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+                <p ref={heroDescRef} className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
                     Creating immersive physical environments that tell your brand's story and engage audiences at every touchpoint.
                 </p>
             </header>
@@ -44,7 +75,7 @@ const ConferencesPage = () => {
                         <h2 className="text-sm font-bold uppercase tracking-widest text-primary-red mb-4">Why Symbol</h2>
                         <h3 className="text-3xl md:text-4xl font-bold mb-6">Designed to Captivate</h3>
                     </div>
-                    <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+                    <div ref={whyDescRef} className="text-lg text-gray-300 leading-relaxed space-y-6">
                         <p>
                             In the crowded landscape of exhibitions and conferences, standing out is not just an option—it's a necessity. We believe that a booth or pavilion is more than just a structure; it's a physical manifestation of your brand's identity and values.
                         </p>

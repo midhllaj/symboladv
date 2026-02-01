@@ -1,11 +1,39 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Character from '../../Textscroll/Textscroll/Character';
-import styles from '../../Textscroll/Textscroll/Style.module.scss'; // Reusing styles if compatible, or just use tailwind
+import styles from '../../Textscroll/Textscroll/Style.module.scss';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WhoWeAre = () => {
+    const statsRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const stats = statsRef.current.querySelectorAll('.count-stat');
+            stats.forEach((stat, index) => {
+                const targetVal = index === 0 ? 25 : 500;
+                const obj = { val: 0 };
+                gsap.to(obj, {
+                    val: targetVal,
+                    duration: 2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: statsRef.current,
+                        start: "top 85%",
+                    },
+                    onUpdate: () => {
+                        stat.textContent = Math.floor(obj.val) + "+";
+                    }
+                });
+            });
+        }, statsRef);
+        return () => ctx.revert();
+    }, []);
     const introText = "Symbol Advertising is a full-service advertising agency committed to crafting powerful brand experiences. Since 1999, we have partnered with businesses to create visually striking, strategically sound, and result-driven advertising solutions.";
-    const beliefText = "We believe great advertising is not loud — it's memorable.";
+
 
     return (
         <div className="flex flex-col items-start justify-center w-full px-4 py-4 space-y-6 text-white">
@@ -19,20 +47,16 @@ const WhoWeAre = () => {
                 </div>
             </div>
 
-            <div className="text-left">
-                <div className="text-xl md:text-2xl font-semibold italic text-gray-300">
-                    <Character paragraph={beliefText} />
-                </div>
-            </div>
+
 
             {/* Stats Section - Static for clarity or simple animation */}
-            <div className="grid grid-cols-2 gap-6 w-full border-t border-b border-gray-800 py-6">
+            <div ref={statsRef} className="grid grid-cols-2 gap-6 w-full border-t border-b border-gray-800 py-6">
                 <div className="text-left">
-                    <p className="text-3xl font-bold text-[#D64545]">25+</p>
+                    <p className="text-3xl font-bold text-[#D64545] count-stat">0+</p>
                     <p className="text-sm uppercase tracking-wider text-gray-400">Years Experience</p>
                 </div>
                 <div className="text-left">
-                    <p className="text-3xl font-bold text-[#D64545]">500+</p>
+                    <p className="text-3xl font-bold text-[#D64545] count-stat">0+</p>
                     <p className="text-sm uppercase tracking-wider text-gray-400">Clients Trust Us</p>
                 </div>
             </div>

@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
     const sectionRef = useRef(null);
     const fadeElsRef = useRef([]);
+    const statsRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -21,6 +22,27 @@ const About = () => {
                     start: "top 70%",
                 }
             });
+
+            // Count Animation
+            if (statsRef.current) {
+                const stats = statsRef.current.querySelectorAll('.count-stat');
+                stats.forEach((stat, index) => {
+                    const targetVal = index === 0 ? 25 : 500;
+                    const obj = { val: 0 };
+                    gsap.to(obj, {
+                        val: targetVal,
+                        duration: 2,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: statsRef.current,
+                            start: "top 85%",
+                        },
+                        onUpdate: () => {
+                            stat.textContent = Math.floor(obj.val) + "+";
+                        }
+                    });
+                });
+            }
         }, sectionRef);
 
         return () => ctx.revert();
@@ -44,16 +66,14 @@ const About = () => {
                         <p className="text-lg text-black/60 leading-relaxed mb-6">
                             Symbol Advertising is a full-service advertising agency committed to crafting powerful brand experiences. Since 1999, we have partnered with businesses to create visually striking, strategically sound, and result-driven advertising solutions.
                         </p>
-                        <p className="text-lg text-black font-medium mb-6">
-                            We believe great advertising is not loud — it’s memorable.
-                        </p>
-                        <div className="flex space-x-8">
+
+                        <div ref={statsRef} className="flex space-x-8">
                             <div>
-                                <span className="block text-3xl font-bold text-black">25+</span>
+                                <span className="block text-3xl font-bold text-black count-stat">0+</span>
                                 <span className="text-sm text-black/50">Years Experience</span>
                             </div>
                             <div>
-                                <span className="block text-3xl font-bold text-black">500+</span>
+                                <span className="block text-3xl font-bold text-black count-stat">0+</span>
                                 <span className="text-sm text-black/50">Clients Trust Us</span>
                             </div>
                         </div>

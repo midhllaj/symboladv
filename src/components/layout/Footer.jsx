@@ -35,14 +35,14 @@ const Section1 = () => {
             </div>
             <div className='flex flex-col gap-1'>
                 <h3 className='mb-2 uppercase text-[#ffffff80] font-medium text-xs'>Services</h3>
-                <a href="#branding" className="hover:underline text-sm">Branding</a>
-                <a href="#web-design" className="hover:underline text-sm">Web Design</a>
-                <a href="#marketing" className="hover:underline text-sm">Marketing</a>
-                <a href="#development" className="hover:underline text-sm">Development</a>
+                <a href="/conferences" className="hover:underline text-sm">Contacting & Exhibition</a>
+                <a href="/signboard" className="hover:underline text-sm">Signboard & Outdoor</a>
+                <a href="/digital-experiences" className="hover:underline text-sm">Digital Experiences</a>
+                <a href="#" className="hover:underline text-sm">Construction & Branding</a>
             </div>
             <div className='flex flex-col gap-1'>
                 <h3 className='mb-2 uppercase text-[#ffffff80] font-medium text-xs'>Connect</h3>
-                <a href="#instagram" className="hover:underline text-sm">Instagram</a>
+                <a href="https://www.instagram.com/symboladvertising/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="hover:underline text-sm">Instagram</a>
                 <a href="#linkedin" className="hover:underline text-sm">LinkedIn</a>
                 <a href="#twitter" className="hover:underline text-sm">Twitter</a>
             </div>
