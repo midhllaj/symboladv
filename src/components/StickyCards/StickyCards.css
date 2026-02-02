@@ -112,7 +112,8 @@
         padding: 1.5rem;
         box-sizing: border-box;
         height: auto;
-        min-height: 100svh;
+        min-height: auto;
+        margin-bottom: 0;
     }
 
     .sticky-card-index h1 {

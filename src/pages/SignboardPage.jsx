@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
+import { useModal } from '../context/ModalContext';
 import SEO from '../components/SEO';
-import Navbar from '../components/layout/Navbar';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SignboardPage = () => {
+    const { openModal } = useModal();
     const heroDescRef = useRef(null);
     const whyDescRef = useRef(null);
 
@@ -122,7 +124,7 @@ const SignboardPage = () => {
                 description="Make a lasting impression with premium outdoor signage, billboards, pylons, and signboard manufacturing. Quality craftsmanship by Symbol Advertising since 1999."
                 canonical="/signboard"
             />
-            <Navbar />
+
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
@@ -185,9 +187,9 @@ const SignboardPage = () => {
                     <p className="text-xl text-white/70 mb-10">
                         Let's create signage that puts your brand on the map.
                     </p>
-                    <a href="/#contact" className="inline-block bg-primary-red hover:bg-[#b03535] text-white font-bold py-4 px-10 rounded-full transition-colors duration-300">
+                    <button onClick={() => openModal('Signboards')} className="inline-block bg-primary-red hover:bg-[#b03535] text-white font-bold py-4 px-10 rounded-full transition-colors duration-300">
                         Get a Quote
-                    </a>
+                    </button>
                 </div>
             </section>
         </div>

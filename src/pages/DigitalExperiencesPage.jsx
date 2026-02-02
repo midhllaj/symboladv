@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import Navbar from '../components/layout/Navbar';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -73,7 +73,7 @@ const DigitalExperiencesPage = () => {
                 description="Create immersive digital experiences that captivate your audience. Web design, UI/UX, interactive media, e-commerce platforms, and digital marketing solutions by Symbol Advertising."
                 canonical="/digital-experiences"
             />
-            <Navbar />
+
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">

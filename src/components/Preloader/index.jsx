@@ -1,66 +1,194 @@
 'use client';
+import { useEffect, useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
 import styles from './style.module.scss';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { opacity, slideUp } from './anim';
 
-const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", "Hallo"]
+// The SVG logo paths data
+const LOGO_PATHS = [
+    { d: "M194.34 105.92C211.85 102.28 214.94 128.14 198.57 129.71C183.89 131.12 181.05 108.68 194.34 105.92Z", fill: "#CD4346" },
+    { d: "M217.57 237.94C231.34 236.1 236.84 255.02 224.4 260.55C207.2 268.2 200.31 240.25 217.57 237.94Z", fill: "#CD4346" },
+    { d: "M284.16 67.64C296.05 65.99 303.06 83.02 292.06 89.87C275.84 99.97 264.9 70.31 284.16 67.64Z", fill: "#525252" },
+    { d: "M216.79 86.43C226.59 84.63 234.83 93.35 231.01 102.93C228.01 110.46 216.76 112.04 211.45 106.43C205.41 100.04 207.83 88.08 216.79 86.43Z", fill: "#CD4346" },
+    { d: "M43.2 45.92C61.77 42.08 63.42 67.82 48.07 69.61C33.39 71.32 30.48 48.55 43.2 45.92Z", fill: "#CD4346" },
+    { d: "M260.19 45.92C265.09 44.92 269.48 45.56 272.76 49.47C279.06 56.98 275.16 68.32 265.28 69.02C248.87 70.19 248.76 48.25 260.18 45.91L260.19 45.92Z", fill: "#CD4346" },
+    { d: "M111.29 105.93C123.8 103.8 131.02 120.77 119.5 127.65C102.62 137.73 93.27 109 111.29 105.93Z", fill: "#CD4346" },
+    { d: "M87.34 237.92C100.54 235.13 108.43 252.73 95.88 259.98C80.19 269.04 70.68 241.44 87.34 237.92Z", fill: "#CD4346" },
+    { d: "M195.11 218.41C208.47 216.44 214.23 235.7 201.8 240.9C184.21 248.26 178.23 220.9 195.11 218.41Z", fill: "#CD4346" },
+    { d: "M260.19 237.92C272.11 235.44 280.6 248.82 271.92 257.92C266.47 263.63 255.66 261.5 252.54 254.24C249.95 248.22 253.44 239.32 260.19 237.91V237.92Z", fill: "#525252" },
+    { d: "M66.4 66.93C83.28 64.25 85.53 89.55 69.12 90.73C55.24 91.73 52.03 69.21 66.4 66.93Z", fill: "#CD4346" },
+    { d: "M88.85 86.43C106.39 83.65 107.14 111.96 89.62 110.08C75.96 108.61 76.03 88.46 88.85 86.43Z", fill: "#CD4346" },
+    { d: "M195.14 177.16C206.84 176.24 213.69 192.87 202.07 199.17C184.57 208.66 176.61 178.62 195.14 177.16Z", fill: "#525252" },
+    { d: "M112.08 177.16C124.28 175.95 130.58 192.88 119.01 199.16C102.1 208.33 93.54 178.99 112.08 177.16Z", fill: "#525252" },
+    { d: "M237.74 108.17C256.43 104.29 258.56 132.29 240.55 131.3C226.52 130.53 226.51 110.5 237.74 108.17Z", fill: "#525252" },
+    { d: "M217.59 127.66C229.98 126.4 235.71 144.11 224.01 149.91C206.86 158.4 199.58 129.49 217.59 127.66Z", fill: "#525252" },
+    { d: "M132.99 199.68C146.04 197.56 152.86 213.63 142.11 220.82C131.36 228.01 118.76 214.97 125.36 204.78C126.9 202.41 130.17 200.13 132.99 199.68Z", fill: "#CD4346" },
+    { d: "M110.55 218.43C126.28 215.93 129.5 238.58 116.18 241.33C98.27 245.03 96.1 220.72 110.55 218.43Z", fill: "#CD4346" },
+    { d: "M64.89 217.67C78.09 214.92 86.09 231.24 74.77 238.82C67.61 243.61 57.99 239.47 56.41 231.02C55.46 225.91 59.69 218.76 64.89 217.67Z", fill: "#525252" },
+    { d: "M171.91 199.68C184.2 197.73 192.1 213.78 180.58 221.13C164.3 231.53 154.66 202.41 171.91 199.68Z", fill: "#CD4346" },
+    { d: "M216.83 197.43C231.68 195.58 235.49 217.48 221.69 220.33C204.42 223.9 201.16 199.38 216.83 197.43Z", fill: "#525252" },
+    { d: "M240.03 258.18C254.95 256.56 258.55 278.22 244.89 281.08C227.44 284.73 224.53 259.86 240.03 258.18Z", fill: "#CD4346" },
+    { d: "M238.49 66.92C248.26 64.89 255.16 71.45 253.61 81.32C252.43 88.83 241.95 92.13 235.74 88.08C227.65 82.81 229.21 68.84 238.49 66.92Z", fill: "#CD4346" },
+    { d: "M100 148.24C88.72 158.86 73.05 142.04 83.02 131.6C94.64 119.43 110.82 138.07 100 148.24Z", fill: "#525252" },
+    { d: "M77.57 128C65.8 139.8 49.27 120.67 61.34 110.6C72.83 101.01 87.79 117.76 77.57 128Z", fill: "#525252" },
+    { d: "M232.97 220.76C241.14 213.23 253.9 219.67 252.92 230.62C251.59 245.43 227.51 244.42 229.71 226.85C229.96 224.84 231.5 222.12 232.98 220.76H232.97Z", fill: "#525252" },
+    { d: "M66.42 257.4C78.05 255.77 85.23 272.98 73.37 279.42C56.35 288.65 48.53 259.91 66.42 257.4Z", fill: "#CD4346" },
+    { d: "M44.74 237.16C57.57 236.08 62.96 254.4 50.81 259.8C33.76 267.38 27.56 238.61 44.74 237.16Z", fill: "#525252" },
+    { d: "M132.98 124.67C152.11 120.69 152.65 150.57 133.74 147.57C121.33 145.61 121.51 127.05 132.98 124.67Z", fill: "#CD4346" },
+    { d: "M88.85 197.43C104.97 194.8 107.92 217.69 93.74 220.32C77.35 223.35 74.59 199.76 88.85 197.43Z", fill: "#525252" },
+    { d: "M22.25 68.43C39.16 65.29 42.15 88.76 27.13 91.32C18.98 92.71 12.53 85.74 13.53 77.7C13.99 73.97 18.58 69.11 22.25 68.43Z", fill: "#525252" },
+    { d: "M21.5 257.42C36.76 254.79 41.24 277.59 26.39 280.32C9.44 283.43 7.54 259.83 21.5 257.42Z", fill: "#525252" },
+    { d: "M284.15 257.41C300.07 255.08 302.78 282.89 283.19 280.51C270.5 278.97 270.51 259.41 284.15 257.41Z", fill: "#525252" },
+    { d: "M43.2 278.43C56.03 276.24 63.43 292.68 52.16 299.4C35.16 309.54 26.25 281.32 43.2 278.43Z", fill: "#CD4346" },
+    { d: "M172.65 124.68C188.6 122.06 192.02 144.96 177.54 147.57C161.44 150.47 158.3 127.04 172.65 124.68Z", fill: "#CD4346" },
+    { d: "M45.47 87.9C49.72 87.31 54.86 90.35 57.02 93.97C63.71 105.17 49.15 116.87 39.27 108.76C31.39 102.29 35.85 89.23 45.47 87.9Z", fill: "#525252" },
+    { d: "M260.94 87.92C271.37 85.75 280.47 100.03 271.55 108.3C262.32 116.85 246 105.71 253.5 93.21C254.67 91.26 258.74 88.38 260.94 87.92Z", fill: "#525252" },
+    { d: "M260.19 279.17C265.54 278.06 269.91 279.48 273.11 283.87C280.6 294.15 268.67 306.36 257.95 300.57C248.83 295.64 250.78 281.13 260.19 279.17Z", fill: "#CD4346" },
+    { d: "M112.83 147.91C126.94 146.51 130.64 168.9 116.29 170.93C98.77 173.41 98.09 149.37 112.83 147.91Z", fill: "#525252" },
+    { d: "M195.12 147.89C210.76 146.07 213.78 174.17 193.47 170.95C181.49 169.05 182.05 149.41 195.12 147.89Z", fill: "#525252" }
+];
 
 export default function Preloader({ onComplete }) {
-    const [index, setIndex] = useState(0);
-    const [dimension] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return { width: window.innerWidth, height: window.innerHeight }
-        }
-        return { width: 0, height: 0 }
-    });
+    const containerRef = useRef(null);
+    const pathRefs = useRef([]);
+    const dotRefs = useRef([]);
 
-    useEffect(() => {
-        if (index == words.length - 1) return;
-        setTimeout(() => {
-            setIndex(index + 1)
-        }, index == 0 ? 1000 : 150)
-    }, [index])
+    useLayoutEffect(() => {
+        // Animation logic
+        const logoCenterX = 321 / 2;
+        const logoCenterY = 328 / 2;
+        const globeRadius = 100;
 
-    // Trigger onComplete slightly after the words are done, 
-    // but before the slideUp exit animation starts if we want to sync, 
-    // OR we trigger it so the parent AnimatePresence handles the exit.
-    // In this template, the slideUp exit animation is handled by framer-motion exit prop.
-    // So we just need to wait for words to finish, then tell parent to remove this component.
-    useEffect(() => {
-        if (index === words.length - 1) {
-            const timeout = setTimeout(() => {
+        const pathElements = pathRefs.current.filter(el => el !== null);
+        const dotElements = dotRefs.current.filter(el => el !== null);
+        const container = containerRef.current;
+
+        // Initial Set: Hide real paths, set dots to 0 opacity
+        gsap.set(pathElements, { opacity: 0 });
+        gsap.set(dotElements, { opacity: 0 });
+
+        // Calculate Positions
+        dotElements.forEach((dot, i) => {
+            if (pathElements[i] && dot) {
+                const bbox = pathElements[i].getBBox();
+                const centerX = bbox.x + bbox.width / 2;
+                const centerY = bbox.y + bbox.height / 2;
+
+                // 1. Globe Formation positions using spherical distribution
+                const phi = Math.acos(-1 + (2 * i) / LOGO_PATHS.length);
+                const theta = Math.sqrt(LOGO_PATHS.length * Math.PI) * phi;
+
+                const globeX = logoCenterX + globeRadius * Math.sin(phi) * Math.cos(theta);
+                const globeY = logoCenterY + globeRadius * Math.cos(phi);
+
+                // Store positions in dataset not strictly necessary in React if we use logic here, 
+                // but nice for keeping it close to original code logic
+                dot.dataset.finalX = centerX;
+                dot.dataset.finalY = centerY;
+                dot.dataset.globeX = globeX;
+                dot.dataset.globeY = globeY;
+
+                // Scatter position for Phase 2: near final but randomized
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 30 + Math.random() * 30;
+                dot.dataset.scatterX = centerX + Math.cos(angle) * dist;
+                dot.dataset.scatterY = centerY + Math.sin(angle) * dist;
+
+                // Set start pos (Globe)
+                gsap.set(dot, {
+                    attr: { cx: globeX, cy: globeY, r: 2 },
+                    fill: LOGO_PATHS[i].fill
+                });
+            }
+        });
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                // Animation finished - call callback
                 if (onComplete) onComplete();
-            }, 1000); // Wait a bit after the last word
-            return () => clearTimeout(timeout);
-        }
-    }, [index, onComplete])
+            }
+        });
 
+        // Phase 1: Globe Formation (0 - 0.8s)
+        tl.to(dotElements, {
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: { amount: 0.4, from: "random" }
+        });
 
-    const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`
-    const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`
+        // Phase 2: Globe -> Near-Scatter (0.8s - 1.4s)
+        tl.to(dotElements, {
+            attr: { cx: (i, t) => t.dataset.scatterX, cy: (i, t) => t.dataset.scatterY, r: 3 },
+            duration: 0.6,
+            ease: "power2.inOut",
+            stagger: { amount: 0.2, from: "center" }
+        }, "+=0.2");
 
-    const curve = {
-        initial: {
-            d: initialPath,
-            transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] }
-        },
-        exit: {
-            d: targetPath,
-            transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 }
-        }
-    }
+        // Phase 3: Dot Alignment into Logo (1.4s - 2.3s)
+        tl.to(dotElements, {
+            attr: { cx: (i, t) => t.dataset.finalX, cy: (i, t) => t.dataset.finalY, r: 4 },
+            duration: 0.9,
+            ease: "back.out(1.2)",
+            stagger: { amount: 0.1, from: "random" }
+        });
+
+        // Phase 4: Logo Glow Confirmation (2.3s - 2.7s)
+        tl.add("glow");
+
+        // Fade in paths (Real Logo)
+        tl.fromTo(pathElements,
+            { opacity: 0 },
+            {
+                opacity: 1,
+                duration: 0.4,
+                ease: "power2.out"
+            }, "glow"
+        );
+
+        // Hide dots as paths appear
+        tl.to(dotElements, { opacity: 0, duration: 0.3 }, "glow");
+
+        // Phase 5: Transition to Website (2.7s - 3.5s)
+        tl.to(container, {
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.inOut"
+        }, "+=0.1");
+
+        return () => {
+            tl.kill();
+        };
+
+    }, [onComplete]);
 
     return (
-        <motion.div variants={slideUp} initial="initial" exit="exit" className={styles.introduction}>
-            {dimension.width > 0 &&
-                <>
-                    <motion.p variants={opacity} initial="initial" animate="enter"><span></span>{words[index]}</motion.p>
-                    <svg>
-                        <motion.path variants={curve} initial="initial" exit="exit"></motion.path>
-                    </svg>
-                </>
-            }
-        </motion.div>
-    )
+        <div ref={containerRef} className={styles.landingAnimationContainer}>
+            <svg width="321" height="328" viewBox="0 0 321 328" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="real-paths">
+                    {LOGO_PATHS.map((path, i) => (
+                        <path
+                            key={`path-${i}`}
+                            d={path.d}
+                            fill={path.fill}
+                            ref={el => pathRefs.current[i] = el}
+                            style={{ opacity: 0 }}
+                        />
+                    ))}
+                </g>
+                <g id="dots">
+                    {LOGO_PATHS.map((path, i) => (
+                        <circle
+                            key={`dot-${i}`}
+                            cx="0"
+                            cy="0"
+                            r="4"
+                            fill={path.fill}
+                            ref={el => dotRefs.current[i] = el}
+                            style={{ opacity: 0 }}
+                        />
+                    ))}
+                </g>
+            </svg>
+        </div>
+    );
 }

@@ -103,7 +103,7 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                                             { name: 'Contacting & Exhibition', href: '/conferences' },
                                             { name: 'Signboard & Outdoor', href: '/signboard' },
                                             { name: 'Digital Experiences', href: '/digital-experiences' },
-                                            { name: 'Construction & Branding', href: '#' }
+                                            { name: 'Construction & Branding', href: '/construction' }
                                         ].map((item) => (
                                             <a
                                                 key={item.name}

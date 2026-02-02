@@ -4,6 +4,8 @@ import './StickyCards.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import detailImg from '../../assets/construction/detail.png';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const StickyCards = () => {
@@ -29,7 +31,7 @@ const StickyCards = () => {
         {
             index: "04",
             title: "Construction & Brand Infrastructure",
-            image: "/services/construction.jpg",
+            image: detailImg,
             description: "Full-scale structural branding and setups. We bridge the gap between creative vision and physical reality with expert execution.",
         },
     ];
@@ -39,6 +41,41 @@ const StickyCards = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             const mm = gsap.matchMedia();
+
+            // Text Animations (All Devices)
+            const cards = document.querySelectorAll(".sticky-card");
+            cards.forEach(card => {
+                const texts = card.querySelectorAll(".sticky-card-index h1, .sticky-card-header, .sticky-card-copy p");
+
+                gsap.from(texts, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+
+                const image = card.querySelector(".sticky-card-img img");
+                gsap.fromTo(image,
+                    { scale: 1.2, opacity: 0 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
 
             mm.add("(min-width: 1001px)", () => {
                 const stickyCards = document.querySelectorAll(".sticky-card");
@@ -78,6 +115,8 @@ const StickyCards = () => {
                     }
                 });
             });
+
+
         }, container);
 
         return () => ctx.revert();
@@ -89,7 +128,8 @@ const StickyCards = () => {
                 const isConferences = cardData.index === "01";
                 const isSignboard = cardData.index === "02";
                 const isDigitalExp = cardData.index === "03";
-                const CardWrapper = (isConferences || isSignboard || isDigitalExp) ? Link : 'div';
+                const isConstruction = cardData.index === "04";
+                const CardWrapper = (isConferences || isSignboard || isDigitalExp || isConstruction) ? Link : 'div';
 
                 let wrapperProps = {};
                 if (isConferences) {
@@ -98,6 +138,8 @@ const StickyCards = () => {
                     wrapperProps = { to: '/signboard' };
                 } else if (isDigitalExp) {
                     wrapperProps = { to: '/digital-experiences' };
+                } else if (isConstruction) {
+                    wrapperProps = { to: '/construction' };
                 }
 
                 return (
@@ -105,7 +147,7 @@ const StickyCards = () => {
                         className="sticky-card"
                         key={index}
                         {...wrapperProps}
-                        style={{ cursor: (isConferences || isSignboard || isDigitalExp) ? 'pointer' : 'default' }}
+                        style={{ cursor: (isConferences || isSignboard || isDigitalExp || isConstruction) ? 'pointer' : 'default' }}
                     >
                         <div className="sticky-card-index">
                             <h1>{cardData.index}</h1>

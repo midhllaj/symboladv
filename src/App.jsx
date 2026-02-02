@@ -13,8 +13,10 @@ import DigitalExperiencesPage from './pages/DigitalExperiencesPage';
 import ConferencesPage from './pages/ConferencesPage';
 import SignboardPage from './pages/SignboardPage';
 import ErpSolutionPage from './pages/ErpSolutionPage';
+import ConstructionPage from './pages/ConstructionPage';
 import Preloader from './components/Preloader';
 import GradientCursor from './components/GradientCursor/GradientCursor';
+import ContactModal from './components/ui/ContactModal';
 
 const AppLayout = () => {
   const [menuActive, setMenuActive] = useState(false);
@@ -25,6 +27,7 @@ const AppLayout = () => {
   const isConferences = location.pathname === '/conferences';
   const isSignboard = location.pathname === '/signboard';
   const isErpSolutions = location.pathname === '/erp-solutions';
+  const isConstruction = location.pathname === '/construction';
 
   // Close menu on route change
   useEffect(() => {
@@ -46,8 +49,10 @@ const AppLayout = () => {
         <Route path="/conferences" element={<ConferencesPage />} />
         <Route path="/signboard" element={<SignboardPage />} />
         <Route path="/erp-solutions" element={<ErpSolutionPage />} />
+        <Route path="/construction" element={<ConstructionPage />} />
       </Routes>
       {!isErpSolutions && <Footer />}
+      <ContactModal />
     </div>
   );
 };

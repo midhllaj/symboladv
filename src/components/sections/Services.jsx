@@ -4,6 +4,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MoveUpRight, ArrowRight } from 'lucide-react';
 
+import detailImg from '../../assets/construction/detail.png';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const servicesData = [
@@ -32,8 +34,8 @@ const servicesData = [
         id: 4,
         title: 'Construction & Branding Infrastructure',
         description: 'We deliver end-to-end construction solutions that support and elevate brand presence in physical spaces.',
-        image: '/services/construction.jpg',
-        link: '/portfolio'
+        image: detailImg,
+        link: '/construction'
     },
 ];
 

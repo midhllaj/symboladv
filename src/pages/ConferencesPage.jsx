@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
+import { useModal } from '../context/ModalContext';
 import SEO from '../components/SEO';
-import Navbar from '../components/layout/Navbar';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ConferencesPage = () => {
+    const { openModal } = useModal();
     const heroDescRef = useRef(null);
     const whyDescRef = useRef(null);
 
@@ -62,7 +64,7 @@ const ConferencesPage = () => {
                 description="Stand out at trade shows and conferences with custom booth design, exhibition stands, and event branding. Symbol Advertising creates immersive exhibition experiences."
                 canonical="/conferences"
             />
-            <Navbar />
+
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
@@ -125,9 +127,9 @@ const ConferencesPage = () => {
                     <p className="text-xl text-white/70 mb-10">
                         Let's discuss how we can elevate your next exhibition presence.
                     </p>
-                    <a href="/#contact" className="inline-block bg-primary-red hover:bg-[#b03535] text-white font-bold py-4 px-10 rounded-full transition-colors duration-300">
+                    <button onClick={() => openModal('Exhibitions')} className="inline-block bg-primary-red hover:bg-[#b03535] text-white font-bold py-4 px-10 rounded-full transition-colors duration-300">
                         Get in Touch
-                    </a>
+                    </button>
                 </div>
             </section>
         </div>

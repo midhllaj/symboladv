@@ -1,6 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
-import Navbar from '../components/layout/Navbar';
+
 
 const ErpSolutionPage = () => {
     return (
@@ -10,7 +10,7 @@ const ErpSolutionPage = () => {
                 description="Streamline your business operations with our comprehensive custom ERP solutions. Mobile-first design, real-time dashboards, and integrated systems for modern enterprises."
                 canonical="/erp-solutions"
             />
-            <Navbar />
+
 
             {/* Hero Section */}
             <header className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center">
