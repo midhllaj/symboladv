@@ -32,7 +32,7 @@ const ClientLogos = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-dark-charcoal text-white relative overflow-hidden border-t border-white/5">
+        <section ref={sectionRef} className="pt-24 pb-12 bg-dark-charcoal text-white relative overflow-hidden border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
                 <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
                     Where ideas take shape and <span className="text-primary-red">brands take presence.</span>
@@ -49,7 +49,7 @@ const ClientLogos = () => {
                             <img
                                 src={`/logosss/${logo}`}
                                 alt="Client Logo"
-                                className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                             />
                         </div>
                     ))}

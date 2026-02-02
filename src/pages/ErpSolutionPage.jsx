@@ -1,9 +1,15 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/layout/Navbar';
 
 const ErpSolutionPage = () => {
     return (
         <div className="bg-white min-h-screen text-dark-charcoal font-sans selection:bg-purple-500 selection:text-white">
+            <SEO
+                title="ERP Solutions for Business | Symbol Advertising"
+                description="Streamline your business operations with our comprehensive custom ERP solutions. Mobile-first design, real-time dashboards, and integrated systems for modern enterprises."
+                canonical="/erp-solutions"
+            />
             <Navbar />
 
             {/* Hero Section */}

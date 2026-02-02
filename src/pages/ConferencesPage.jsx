@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/layout/Navbar';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -56,6 +57,11 @@ const ConferencesPage = () => {
 
     return (
         <div className="bg-black min-h-screen text-white font-sans selection:bg-primary-red selection:text-white">
+            <SEO
+                title="Exhibition & Conference Solutions | Symbol Advertising"
+                description="Stand out at trade shows and conferences with custom booth design, exhibition stands, and event branding. Symbol Advertising creates immersive exhibition experiences."
+                canonical="/conferences"
+            />
             <Navbar />
 
             {/* Hero Section */}

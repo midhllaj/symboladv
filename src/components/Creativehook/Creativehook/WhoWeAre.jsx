@@ -36,11 +36,11 @@ const WhoWeAre = () => {
 
 
     return (
-        <div className="flex flex-col items-start justify-center w-full px-4 py-4 space-y-6 text-white">
+        <div className="flex flex-col items-start justify-center w-full px-4 py-4 space-y-3 text-white">
 
             {/* Intro Section */}
             <div className="text-left">
-                <h2 className="text-2xl font-bold mb-3 text-[#D64545]">Who We Are</h2>
+                <h2 className="text-2xl font-bold mb-2 text-[#D64545]">Who We Are</h2>
                 {/* Using a wrapper div to ensure the Character component styles work correctly if they rely on specific containment */}
                 <div className="text-xl md:text-2xl leading-relaxed">
                     <Character paragraph={introText} />
@@ -50,7 +50,7 @@ const WhoWeAre = () => {
 
 
             {/* Stats Section - Static for clarity or simple animation */}
-            <div ref={statsRef} className="grid grid-cols-2 gap-6 w-full border-t border-b border-gray-800 py-6">
+            <div ref={statsRef} className="grid grid-cols-2 gap-6 w-full border-t border-b border-gray-800 py-4">
                 <div className="text-left">
                     <p className="text-3xl font-bold text-[#D64545] count-stat">0+</p>
                     <p className="text-sm uppercase tracking-wider text-gray-400">Years Experience</p>

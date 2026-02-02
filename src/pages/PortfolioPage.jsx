@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 
 // All portfolio images - combined from both folders
 const allImages = [
@@ -113,6 +114,11 @@ const PortfolioPage = () => {
 
     return (
         <div className="min-h-screen bg-white pt-32 pb-24">
+            <SEO
+                title="Our Work & Portfolio | Symbol Advertising"
+                description="Browse our portfolio of successful branding projects, digital campaigns, signage solutions, and creative work. See how Symbol Advertising has transformed 500+ brands since 1999."
+                canonical="/portfolio"
+            />
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-12">

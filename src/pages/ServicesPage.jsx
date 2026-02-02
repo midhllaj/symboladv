@@ -1,10 +1,15 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import StickyCards from '../components/StickyCards/StickyCards';
 
 const ServicesPage = () => {
     return (
         <div className="bg-light-grey">
-            {/* Intro Section */}
+            <SEO
+                title="Our Services | Symbol Advertising"
+                description="Explore our full range of services: brand identity, digital experiences, conference exhibitions, outdoor signage, and ERP solutions. Transform your business today."
+                canonical="/services"
+            />
             <section
                 className="relative w-full h-[50vh] bg-cover bg-center bg-no-repeat text-white flex justify-center items-center text-center"
                 style={{ backgroundImage: "url('/services/hot-air-balloon-adventure-2.jpg')" }}

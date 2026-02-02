@@ -77,7 +77,7 @@ const Hero = () => {
             {/* Content Layer */}
             <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center px-6 text-white">
                 <div ref={contentRef}>
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold font-stardom uppercase tracking-tighter mb-6">
+                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold font-sans uppercase tracking-tighter mb-6">
                         Start <br /> With Symbol
                     </h1>
                     <p className="text-lg md:text-2xl font-light max-w-2xl mx-auto uppercase tracking-wide">

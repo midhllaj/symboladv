@@ -8,12 +8,22 @@ import * as THREE from 'three';
 
 export default function CubeComponent({ rotation, xPos, yPos, className }) {
     return (
-        <div className={className || "w-[400px] h-[400px] lg:w-[1400px] lg:h-[600px]"}>
+        <div className={className || "w-full h-full lg:w-[1400px] lg:h-[600px]"}>
             <Canvas camera={{ position: [0, 0, 50], fov: 45 }}>
                 <OrbitControls enableZoom={false} enablePan={false} />
-                <ambientLight intensity={0.5} />
 
-                <Environment preset="studio" />
+                {/* Cinematic Lighting Setup - 3 Point Lighting + Environment */}
+                <ambientLight intensity={0.5} />
+                <Environment preset="city" />
+
+                {/* Key Light - Warm White (Main illumination) */}
+                <spotLight position={[20, 20, 20]} angle={0.25} penumbra={1} intensity={800} color="#fff0dd" castShadow />
+
+                {/* Fill Light - Cool White (Softens shadows) */}
+                <pointLight position={[-20, 0, 20]} intensity={200} color="#d6e6ff" distance={50} decay={2} />
+
+                {/* Rim Light - Pure White (Separation from background) */}
+                <spotLight position={[0, 10, -20]} angle={0.5} penumbra={1} intensity={1000} color="#ffffff" />
 
                 {/* Visible Motion Path - Linear Zigzag */}
                 {/* Path removed as requested */}
@@ -37,7 +47,12 @@ function Symbol({ rotation, xPos, yPos }) {
             return shapes.map((shape, j) => (
                 <mesh key={`${i}-${j}`}>
                     <extrudeGeometry args={[shape, { depth: 10, bevelEnabled: true, bevelThickness: 1, bevelSize: 1, bevelSegments: 3 }]} />
-                    <meshStandardMaterial color={color} side={THREE.DoubleSide} roughness={0.4} metalness={0.8} />
+                    <meshStandardMaterial
+                        color={color}
+                        side={THREE.DoubleSide}
+                        roughness={0.2}
+                        metalness={0.6}
+                    />
                 </mesh>
             ));
         });

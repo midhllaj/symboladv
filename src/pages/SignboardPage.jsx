@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/layout/Navbar';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -116,6 +117,11 @@ const SignboardPage = () => {
 
     return (
         <div className="bg-black min-h-screen text-white font-sans selection:bg-primary-red selection:text-white">
+            <SEO
+                title="Signboard & Outdoor Advertising | Symbol Advertising"
+                description="Make a lasting impression with premium outdoor signage, billboards, pylons, and signboard manufacturing. Quality craftsmanship by Symbol Advertising since 1999."
+                canonical="/signboard"
+            />
             <Navbar />
 
             {/* Hero Section */}

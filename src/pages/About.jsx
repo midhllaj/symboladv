@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 import LeadershipLocation from '../components/sections/LeadershipLocation';
 
@@ -40,7 +41,11 @@ const About = () => {
     }, []);
     return (
         <div className="bg-black min-h-screen pt-20">
-            {/* Hero Section */}
+            <SEO
+                title="About Symbol Advertising | 25+ Years of Creative Excellence"
+                description="Discover our journey since 1999. Symbol Advertising has served 500+ clients with innovative branding, digital experiences, and comprehensive advertising solutions."
+                canonical="/about"
+            />
             <section className="relative py-24 px-6 max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
