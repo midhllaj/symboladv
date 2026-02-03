@@ -60,9 +60,18 @@ const Navbar = ({ menuActive, setMenuActive }) => {
             >
 
                 {/* Logo */}
-                <div className="flex items-center gap-2 cursor-pointer">
+                <a
+                    href="/"
+                    onClick={(e) => {
+                        if (window.location.pathname === '/') {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    }}
+                    className="flex items-center gap-2 cursor-pointer"
+                >
                     <img src="/logo.png" alt="Symbol Advertising" className="h-10 w-auto object-contain" />
-                </div>
+                </a>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">

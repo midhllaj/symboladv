@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useModal } from '../context/ModalContext';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import SEO from '../components/SEO';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -63,12 +64,13 @@ const ConstructionPage = () => {
 
             {/* Hero Section */}
             <div className="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
-                <img
-                    ref={heroRef}
-                    src="/construction/hero.png"
-                    alt="Modern Construction"
-                    className="absolute inset-0 w-full h-full object-cover z-0"
-                />
+                <div ref={heroRef} className="absolute inset-0 w-full h-full z-0">
+                    <OptimizedImage
+                        publicId="construction/hero"
+                        alt="Modern Construction"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-black/40 z-10"></div>
                 <div ref={heroTextRef} className="relative z-20 text-center text-white px-6 max-w-5xl">
                     <h1 className="text-5xl md:text-7xl font-bold mb-6">Construction & <br /> Brand Infrastructure</h1>
@@ -82,7 +84,7 @@ const ConstructionPage = () => {
                 {/* Exterior */}
                 <div ref={addToRefs} className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div className="order-2 md:order-1">
-                        <img src="/construction/exterior.png" alt="Interlocking & Exterior Work" className="w-full h-auto rounded-lg shadow-2xl" />
+                        <OptimizedImage publicId="construction/exterior" alt="Interlocking & Exterior Work" className="w-full h-auto rounded-lg shadow-2xl" />
                     </div>
                     <div className="order-1 md:order-2">
                         <h2 className="text-4xl font-bold mb-6">Exterior & <br /> Interlocking Work</h2>
@@ -101,14 +103,14 @@ const ConstructionPage = () => {
                         </p>
                     </div>
                     <div className="order-2">
-                        <img src="/construction/interior.png" alt="Office Interior" className="w-full h-auto rounded-lg shadow-2xl" />
+                        <OptimizedImage publicId="construction/interior" alt="Office Interior" className="w-full h-auto rounded-lg shadow-2xl" />
                     </div>
                 </div>
 
                 {/* Detail/Glass */}
                 <div ref={addToRefs} className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div className="order-2 md:order-1">
-                        <img src="/construction/detail.png" alt="Glass Work & Partitions" className="w-full h-auto rounded-lg shadow-2xl" />
+                        <OptimizedImage publicId="construction/detail" alt="Glass Work & Partitions" className="w-full h-auto rounded-lg shadow-2xl" />
                     </div>
                     <div className="order-1 md:order-2">
                         <h2 className="text-4xl font-bold mb-6">Glass Work & <br /> Brand Space Details</h2>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useModal } from '../context/ModalContext';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import SEO from '../components/SEO';
 
 import { gsap } from 'gsap';
@@ -162,8 +163,8 @@ const SignboardPage = () => {
                     {projects.map((project, index) => (
                         <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
                             <div className={`overflow-hidden rounded-xl ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                                <img
-                                    src={project.image}
+                                <OptimizedImage
+                                    publicId={project.image.replace(/^\/|\.[^/.]+$/g, "")} // Remove leading slash and extension
                                     alt={project.title}
                                     className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
