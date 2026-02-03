@@ -5,7 +5,11 @@ import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 import { AdvancedImage, responsive, placeholder, lazyload } from '@cloudinary/react';
 
 // Initialize Cloudinary instance
-const cld = new Cloudinary({ cloud: { cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME } });
+const cld = new Cloudinary({
+    cloud: {
+        cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || 'dzmaqq0bd'
+    }
+});
 
 /**
  * OptimizedImage Component
