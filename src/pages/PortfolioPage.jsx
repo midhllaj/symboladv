@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SEO from '../components/SEO';
 import OptimizedImage from '../components/ui/OptimizedImage';
+import { gsap } from 'gsap';
 
 // All portfolio images - combined from both folders
 const allImages = [
@@ -77,6 +78,34 @@ const ITEMS_PER_PAGE = 10;
 
 const PortfolioPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    const headingRef = useRef(null);
+    const descriptionRef = useRef(null);
+
+    useEffect(() => {
+        // Animate heading entrance
+        gsap.fromTo(headingRef.current,
+            { y: 50, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out"
+            }
+        );
+
+        // Animate description paragraphs
+        gsap.fromTo(descriptionRef.current.children,
+            { y: 30, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.3,
+                ease: "power3.out"
+            }
+        );
+    }, []);
 
     // Calculate pagination
     const totalPages = Math.ceil(allImages.length / ITEMS_PER_PAGE);
@@ -114,7 +143,7 @@ const PortfolioPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-white pt-32 pb-24">
+        <div className="min-h-screen bg-black pt-32 pb-24">
             <SEO
                 title="Our Work & Portfolio | Symbol Advertising"
                 description="Browse our portfolio of successful branding projects, digital campaigns, signage solutions, and creative work. See how Symbol Advertising has transformed 500+ brands since 1999."
@@ -123,8 +152,13 @@ const PortfolioPage = () => {
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-dark-charcoal mb-6">Our Portfolio</h1>
-                    <div className="max-w-4xl mx-auto text-medium-grey leading-relaxed space-y-4">
+                    <h1
+                        ref={headingRef}
+                        className="text-4xl md:text-5xl font-bold mb-6 text-primary-red"
+                    >
+                        Our Portfolio
+                    </h1>
+                    <div ref={descriptionRef} className="max-w-4xl mx-auto text-gray-300 leading-relaxed space-y-4">
                         <p>
                             Built on the belief that strong client relationships drive lasting success, Symbol Advertising has been delivering impactful, innovative signage solutions since 1999. Our portfolio reflects a commitment to superior craftsmanship, refined design, timely delivery, and seamless installation.
                         </p>
@@ -160,7 +194,7 @@ const PortfolioPage = () => {
                     <button
                         onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                         disabled={currentPage === 1}
-                        className="w-8 h-8 flex items-center justify-center text-sm text-medium-grey hover:text-dark-charcoal disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="w-8 h-8 flex items-center justify-center text-sm text-gray-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                         «
                     </button>
@@ -169,7 +203,7 @@ const PortfolioPage = () => {
                     {getPageNumbers().map((page, index) => {
                         if (page === '...') {
                             return (
-                                <span key={`ellipsis-${index}`} className="w-8 h-8 flex items-center justify-center text-gray-400">
+                                <span key={`ellipsis-${index}`} className="w-8 h-8 flex items-center justify-center text-gray-500">
                                     ...
                                 </span>
                             );
@@ -180,7 +214,7 @@ const PortfolioPage = () => {
                                 onClick={() => setCurrentPage(page)}
                                 className={`w-8 h-8 flex items-center justify-center text-sm rounded transition-colors ${currentPage === page
                                     ? 'bg-primary-red text-white'
-                                    : 'text-medium-grey hover:text-dark-charcoal hover:bg-light-grey'
+                                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
                                     }`}
                             >
                                 {page}
@@ -192,14 +226,14 @@ const PortfolioPage = () => {
                     <button
                         onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                         disabled={currentPage === totalPages}
-                        className="w-8 h-8 flex items-center justify-center text-sm text-medium-grey hover:text-dark-charcoal disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="w-8 h-8 flex items-center justify-center text-sm text-gray-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                         »
                     </button>
                 </div>
 
                 {/* Page Info */}
-                <div className="text-center mt-4 text-sm text-medium-grey">
+                <div className="text-center mt-4 text-sm text-gray-400">
                     Page {currentPage} of {totalPages} ({allImages.length} projects total)
                 </div>
             </div>

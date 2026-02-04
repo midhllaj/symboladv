@@ -20,7 +20,7 @@ const LeadershipLocation = () => {
                 <motion.div style={{ y }} className='relative w-full h-full'>
                     <OptimizedImage
                         publicId="founder"
-                        alt="Abdul Letheif - Founder"
+                        alt="Mr. Abdul Letheif - Founder"
                         className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-black/60"></div>
@@ -43,7 +43,7 @@ const LeadershipLocation = () => {
                 </div>
 
                 <div className="md:w-1/3 flex flex-col items-center md:items-start border-l-4 border-blue-500 pl-8">
-                    <h3 className="text-4xl font-bold text-white mb-2">ABDUL LETHEIF</h3>
+                    <h3 className="text-4xl font-bold text-white mb-2">Mr. ABDUL LETHEIF</h3>
                     <p className="text-primary-red font-medium uppercase tracking-wider text-sm">Founder & Managing Director</p>
                 </div>
             </div>

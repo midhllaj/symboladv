@@ -110,7 +110,7 @@ const About = () => {
                             <div className="w-24 h-24 bg-black/5 rounded-full mx-auto mb-6 flex items-center justify-center">
                                 <User className="w-10 h-10 text-black/40" />
                             </div>
-                            <h4 className="text-2xl font-bold text-black">ABDUL LETHEIF</h4>
+                            <h4 className="text-2xl font-bold text-black">Mr. ABDUL LETHEIF</h4>
                             <p className="text-primary-red font-medium mb-6 uppercase tracking-wider text-sm">Founder & Managing Director</p>
 
                             <div className="text-black/60 italic leading-relaxed relative">

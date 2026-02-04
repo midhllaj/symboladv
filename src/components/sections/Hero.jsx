@@ -24,15 +24,15 @@ const Hero = () => {
                 }
             );
 
-            // Exit animation on scroll
+            // Exit animation on scroll - hide text quickly when scrolling
             gsap.to(contentRef.current, {
-                y: -150,
+                y: -200,
                 opacity: 0,
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "top top",
-                    end: "bottom top",
-                    scrub: 1
+                    end: "20% top",
+                    scrub: 0.5
                 }
             });
 
