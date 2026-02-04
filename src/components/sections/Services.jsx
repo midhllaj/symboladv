@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MoveUpRight, ArrowRight } from 'lucide-react';
 
-import detailImg from '../../assets/construction/detail.png';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,28 +14,28 @@ const servicesData = [
         id: 1,
         title: 'Contacting & Exhibition Experiences',
         description: 'We design and execute exhibition and contacting programs that don\'t just attract attention - they start conversations.',
-        image: '/services/conferences.png',
+        image: 'services/conferences',
         link: '/conferences'
     },
     {
         id: 2,
         title: 'Signboard & Outdoor Branding',
         description: 'Visibility is power. Our signboard solutions combine design precision, material quality, and strategic placement to ensure your brand stands out.',
-        image: '/services/signboard.jpg',
+        image: 'services/signboard',
         link: '/signboard'
     },
     {
         id: 3,
         title: 'Digital Experiences',
         description: 'We craft web, digital, and interactive experiences that are intuitive, engaging, and aligned with your brand identity - turning clicks into connections.',
-        image: '/services/digital.jpeg',
+        image: 'services/digital',
         link: '/digital-experiences'
     },
     {
         id: 4,
         title: 'Construction & Branding Infrastructure',
         description: 'We deliver end-to-end construction solutions that support and elevate brand presence in physical spaces.',
-        image: detailImg,
+        image: 'construction/detail',
         link: '/construction'
     },
 ];
@@ -130,8 +131,8 @@ const Services = () => {
                             >
                                 <div className="h-[60%] overflow-hidden relative">
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all z-10" />
-                                    <img
-                                        src={service.image}
+                                    <OptimizedImage
+                                        publicId={service.image}
                                         alt={service.title}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
@@ -169,8 +170,8 @@ const Services = () => {
                                     {/* Image Top */}
                                     <div className="h-[55%] w-full overflow-hidden relative">
                                         <div className="absolute inset-0 bg-black/10 z-10" />
-                                        <img
-                                            src={service.image}
+                                        <OptimizedImage
+                                            publicId={service.image}
                                             alt={service.title}
                                             className="w-full h-full object-cover"
                                         />

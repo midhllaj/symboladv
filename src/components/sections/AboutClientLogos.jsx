@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -76,11 +77,10 @@ const AboutClientLogos = () => {
                             key={index}
                             className="logo-item border border-white/10 p-6 flex items-center justify-center aspect-square hover:bg-white/5 transition-all duration-300 group"
                         >
-                            <img
-                                src={`/logosss/${logo}`}
+                            <OptimizedImage
+                                publicId={`logosss/${logo.replace(/\.[^/.]+$/, "")}`}
                                 alt={`Client logo ${index + 1}`}
                                 className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
-                                loading="lazy"
                             />
                         </div>
                     ))}

@@ -1,4 +1,5 @@
 import React from 'react';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import SEO from '../components/SEO';
 
 
@@ -38,15 +39,15 @@ const ErpSolutionPage = () => {
                             </ul>
                         </div>
                         <div className="order-1 md:order-2 flex justify-center gap-6">
-                            <img src="/erp/phone-1.jpg" alt="Mobile ERP Interface 1" className="w-[200px] rounded-3xl shadow-2xl border-8 border-dark-charcoal" />
-                            <img src="/erp/phone-2.jpg" alt="Mobile ERP Interface 2" className="w-[200px] rounded-3xl shadow-2xl border-8 border-dark-charcoal mt-12" />
+                            <OptimizedImage publicId="erp/phone-1" alt="Mobile ERP Interface 1" className="w-[200px] rounded-3xl shadow-2xl border-8 border-dark-charcoal" />
+                            <OptimizedImage publicId="erp/phone-2" alt="Mobile ERP Interface 2" className="w-[200px] rounded-3xl shadow-2xl border-8 border-dark-charcoal mt-12" />
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="relative group">
                             <div className="absolute -inset-4 bg-purple-600/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <img src="/erp/desktop-1.jpg" alt="Desktop ERP Interface 1" className="relative w-full rounded-lg shadow-2xl border border-gray-200" />
+                            <OptimizedImage publicId="erp/desktop-1" alt="Desktop ERP Interface 1" className="relative w-full rounded-lg shadow-2xl border border-gray-200" />
                         </div>
                         <div>
                             <h2 className="text-3xl font-bold mb-6">Comprehensive Desktop Control</h2>
@@ -60,7 +61,7 @@ const ErpSolutionPage = () => {
                     </div>
 
                     <div className="mt-24">
-                        <img src="/erp/desktop-2.jpg" alt="Desktop ERP Interface 2" className="w-full rounded-xl shadow-2xl border border-gray-200" />
+                        <OptimizedImage publicId="erp/desktop-2" alt="Desktop ERP Interface 2" className="w-full rounded-xl shadow-2xl border border-gray-200" />
                     </div>
                 </div>
             </section>

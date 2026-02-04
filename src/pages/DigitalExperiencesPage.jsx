@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -112,8 +113,8 @@ const DigitalExperiencesPage = () => {
                         <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center group">
                             <div className={`overflow-hidden rounded-xl ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-xl">
-                                    <img
-                                        src={project.image}
+                                    <OptimizedImage
+                                        publicId={project.image.replace(/^\//, '').replace(/\.[^/.]+$/, "")}
                                         alt={project.title}
                                         className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                                     />

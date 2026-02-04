@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import OptimizedVideo from '../ui/OptimizedVideo';
 import * as THREE from 'three'; // Likely unused now, but keeping if needed or check next tool call
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -55,22 +56,14 @@ const Hero = () => {
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full">
                 {/* Desktop Video */}
-                <video
+                <OptimizedVideo
+                    publicId="assets/video/desktop"
                     className="hidden md:block w-full h-full object-cover opacity-60"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    src="/assets/video/desktop.mp4"
                 />
                 {/* Mobile Video */}
-                <video
+                <OptimizedVideo
+                    publicId="assets/mobile-hero"
                     className="block md:hidden w-full h-full object-cover opacity-60"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    src="/assets/mobile-hero.mp4"
                 />
             </div>
 

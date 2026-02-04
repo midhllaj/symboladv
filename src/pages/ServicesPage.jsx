@@ -1,6 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import SEO from '../components/SEO';
 import StickyCards from '../components/StickyCards/StickyCards';
+import OptimizedImage from '../components/ui/OptimizedImage';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -87,9 +88,9 @@ const ServicesPage = () => {
             <section
                 className="relative w-full h-[50vh] flex justify-center items-center text-center overflow-hidden"
             >
-                <img
+                <OptimizedImage
                     ref={heroImageRef}
-                    src="/services/hot-air-balloon-adventure-2.jpg"
+                    publicId="services/hot-air-balloon-adventure-2"
                     alt="Services Hero"
                     className="absolute inset-0 w-full h-full object-cover z-0"
                 />

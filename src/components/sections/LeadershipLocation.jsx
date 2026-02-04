@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { useScroll, useTransform, motion } from 'framer-motion';
 
 const LeadershipLocation = () => {
@@ -17,8 +18,8 @@ const LeadershipLocation = () => {
         >
             <div className='fixed top-[-10vh] left-0 h-[120vh] w-full'>
                 <motion.div style={{ y }} className='relative w-full h-full'>
-                    <img
-                        src="/founder.jpeg"
+                    <OptimizedImage
+                        publicId="founder"
                         alt="Abdul Letheif - Founder"
                         className="w-full h-full object-cover object-top"
                     />

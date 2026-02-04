@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/ui/OptimizedImage';
 
 // All portfolio images - combined from both folders
 const allImages = [
@@ -143,11 +144,10 @@ const PortfolioPage = () => {
                                 key={`${image}-${index}`}
                                 className={`${isLarge ? 'col-span-2 row-span-2' : 'col-span-1 row-span-1'} overflow-hidden rounded-lg`}
                             >
-                                <img
-                                    src={`/portfolio/${image}`}
+                                <OptimizedImage
+                                    publicId={`portfolio/${image.replace(/\.[^/.]+$/, "")}`}
                                     alt={`Portfolio project ${startIndex + index + 1}`}
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                    loading="lazy"
                                 />
                             </div>
                         );

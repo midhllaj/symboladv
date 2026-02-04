@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import MenuButton from '../Header/Button';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -70,7 +71,11 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                     }}
                     className="flex items-center gap-2 cursor-pointer"
                 >
-                    <img src="/logo.png" alt="Symbol Advertising" className="h-10 w-auto object-contain" />
+                    <OptimizedImage
+                        publicId="logo"
+                        alt="Symbol Advertising"
+                        className="h-10 w-auto object-contain"
+                    />
                 </a>
 
                 {/* Desktop Menu */}

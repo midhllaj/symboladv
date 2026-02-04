@@ -33,7 +33,7 @@ const OptimizedImage = ({ publicId, alt, width, height, className, style }) => {
     return (
         <AdvancedImage
             cldImg={img}
-            plugins={[lazyload(), placeholder({ mode: 'blur' })]}
+            plugins={[placeholder({ mode: 'blur' })]}
             alt={alt}
             className={className}
             style={style}

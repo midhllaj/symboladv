@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { Link } from 'react-router-dom';
 import './StickyCards.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import detailImg from '../../assets/construction/detail.png';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,25 +14,25 @@ const StickyCards = () => {
         {
             index: "01",
             title: "Conferences & Exhibition Experience",
-            image: "/services/conferences.png",
+            image: "services/conferences",
             description: "Immersive environments for your biggest events. We design spaces that don't just host people, but transport them into unforgettable brand experiences.",
         },
         {
             index: "02",
             title: "Signboard & Outdoor Branding",
-            image: "/services/signboard.jpg",
+            image: "services/signboard",
             description: "High-impact physical branding that stands out day and night. Precision engineering meets creative design for maximum visibility.",
         },
         {
             index: "03",
             title: "Digital Experience",
-            image: "/services/digital.jpeg",
+            image: "services/digital",
             description: "Websites, apps, and digital touchpoints that are intuitive, engaging, and perfectly aligned with your brand identity.",
         },
         {
             index: "04",
             title: "Construction & Brand Infrastructure",
-            image: detailImg,
+            image: "construction/detail",
             description: "Full-scale structural branding and setups. We bridge the gap between creative vision and physical reality with expert execution.",
         },
     ];
@@ -157,7 +158,10 @@ const StickyCards = () => {
                                 <h1 className="sticky-card-header">{cardData.title}</h1>
 
                                 <div className="sticky-card-img">
-                                    <img src={cardData.image} alt={cardData.title} />
+                                    <OptimizedImage
+                                        publicId={cardData.image.replace(/^\//, '').replace(/\.[^/.]+$/, "")}
+                                        alt={cardData.title}
+                                    />
                                 </div>
 
                                 <div className="sticky-card-copy">

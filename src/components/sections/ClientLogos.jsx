@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -46,8 +47,8 @@ const ClientLogos = () => {
                 <div ref={sliderRef} className="flex gap-24 items-center whitespace-nowrap w-max pr-24">
                     {[...logos, ...logos].map((logo, index) => (
                         <div key={index} className="w-48 h-24 flex-shrink-0 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                            <img
-                                src={`/logosss/${logo}`}
+                            <OptimizedImage
+                                publicId={`logosss/${logo.replace(/\.[^/.]+$/, "")}`}
                                 alt="Client Logo"
                                 className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                             />

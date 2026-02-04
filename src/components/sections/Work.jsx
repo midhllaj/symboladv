@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
@@ -8,7 +9,7 @@ const projects = [
         id: 1,
         title: 'BEBEK',
         description: 'Illuminated signboard designed for the Bebek Street food truck, created to boost visibility and establish a strong, memorable street presence.',
-        image: '/recent-project/bebek.jpeg',
+        image: 'recent-project/bebek',
         category: 'BUSINESS SETUP',
         link: '/portfolio'
     },
@@ -16,7 +17,7 @@ const projects = [
         id: 2,
         title: 'E-WHEELS ERP',
         description: 'Custom ERP solution developed for E-Wheels across web and mobile platforms, designed to optimize operations, improve efficiency, and centralize business management.',
-        image: '/recent-project/e-wheels.png',
+        image: 'recent-project/e-wheels',
         category: 'BUSINESS SETUP',
         link: '/portfolio'
     },
@@ -24,7 +25,7 @@ const projects = [
         id: 3,
         title: 'GET WEBSITE',
         description: 'Website UI/UX Project\nCreated a visually clean and professional website for a business setup consultancy, emphasizing brand identity, user experience, and a corporate tone.',
-        image: '/recent-project/get.png',
+        image: 'recent-project/get',
         category: 'BUSINESS SETUP',
         link: '/portfolio'
     },
@@ -32,7 +33,7 @@ const projects = [
         id: 4,
         title: 'JETX',
         description: 'Custom exhibition installation developed for JetX in Dubai.\nA full-scale aircraft display designed to create strong visual impact and elevate brand engagement within a live exhibition environment',
-        image: '/recent-project/ject.png',
+        image: 'recent-project/ject',
         category: 'BUSINESS SETUP',
         link: '/portfolio'
     },
@@ -120,8 +121,8 @@ const Work = () => {
                         }}
                         className="absolute inset-0 w-full h-full"
                     >
-                        <img
-                            src={projects[currentIndex].image}
+                        <OptimizedImage
+                            publicId={projects[currentIndex].image}
                             alt={projects[currentIndex].title}
                             className="w-full h-full object-cover"
                         />

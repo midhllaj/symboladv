@@ -24,13 +24,13 @@ const PUBLIC_DIR = path.resolve(__dirname, '../public');
 async function uploadAssets() {
     console.log('🚀 Starting Cloudinary upload...');
 
-    // Find all images in public directory
-    const files = await glob('**/*.{jpg,jpeg,png,webp,svg}', {
+    // Find all images and videos in public directory
+    const files = await glob('**/*.{jpg,jpeg,png,webp,svg,mp4,webm}', {
         cwd: PUBLIC_DIR,
         ignore: ['node_modules/**', 'dist/**']
     });
 
-    console.log(`Found ${files.length} images to process.`);
+    console.log(`Found ${files.length} assets to process.`);
 
     for (const file of files) {
         const fullPath = path.join(PUBLIC_DIR, file);
@@ -40,6 +40,10 @@ async function uploadAssets() {
         const nameWithoutExt = file.replace(/\.[^/.]+$/, "");
         const publicId = nameWithoutExt.split(path.sep).join('/');
 
+        // Determine resource type based on extension
+        const isVideo = /\.(mp4|webm|mov)$/i.test(file);
+        const resourceType = isVideo ? 'video' : 'image';
+
         try {
             // Check if already exists (optional, but saves bandwidth)
             // Ideally we'd check usage or just overwrite: simple approach is overwrite=false
@@ -47,9 +51,9 @@ async function uploadAssets() {
             const result = await cloudinary.uploader.upload(fullPath, {
                 public_id: publicId,
                 overwrite: false, // Don't re-upload if exists
-                resource_type: "auto"
+                resource_type: resourceType
             });
-            console.log(`✅ Uploaded: ${file} -> ${result.public_id}`);
+            console.log(`✅ Uploaded (${resourceType}): ${file} -> ${result.public_id}`);
         } catch (error) {
             if (error.message.includes('file already exists')) {
                 console.log(`⏭️  Skipped (Exists): ${file}`);
