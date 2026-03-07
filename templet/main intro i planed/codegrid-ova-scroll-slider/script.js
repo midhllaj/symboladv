@@ -29,21 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Reflections ripple across mirrored faces, each one a fragment of identity, caught between defiance, doubt, and the silence of thought.",
       image: "/slider_img_3.jpg",
     },
-    {
-      title:
-        "Soft light spills through the café windows as morning settles into wood and metal, capturing the rhythm of quiet human routine.",
-      image: "/slider_img_4.jpg",
-    },
-    {
-      title:
-        "Every serve becomes a battle between focus and instinct, movement flowing like rhythm as the court blurs beneath the sunlight.",
-      image: "/slider_img_5.jpg",
-    },
-    {
-      title:
-        "Amber light spills over the stage as guitars cry into smoke and shadow, where music and motion merge into pure energy.",
-      image: "/slider_img_6.jpg",
-    },
+
     {
       title:
         "Dust erupts beneath his stride as sweat glints under floodlights, every step pushing closer to victory, grit, and pure determination.",

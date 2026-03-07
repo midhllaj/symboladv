@@ -13,12 +13,13 @@ import { Helmet } from 'react-helmet-async';
  */
 const SEO = ({
     title = "Premium Creative Agency Since 1999",
-    description = "Transform your brand with Symbol Advertising. 25+ years of experience, 500+ satisfied clients. Full-service creative agency offering branding, digital experiences, and outdoor advertising.",
+    description = "Transform your brand with Symbol Advertising. 25+ years of experience, 500+ satisfied clients. Full-service creative agency offering branding, digital experiences, and outdoor advertising in Dubai, UAE.",
+    keywords = "symbol advertising, advertising agency dubai, creative agency uae, branding agency dubai",
     canonical = "",
     type = "website",
     image = "/logo.png"
 }) => {
-    const siteUrl = "https://symboladvertising.com";
+    const siteUrl = "https://symboladvertisement.com";
     const fullTitle = title.includes("Symbol") ? title : `${title} | Symbol Advertising`;
     const canonicalUrl = `${siteUrl}${canonical}`;
     const imageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
@@ -29,7 +30,14 @@ const SEO = ({
             <title>{fullTitle}</title>
             <meta name="title" content={fullTitle} />
             <meta name="description" content={description} />
+            <meta name="keywords" content={keywords} />
             <link rel="canonical" href={canonicalUrl} />
+
+            {/* Geo Meta Tags */}
+            <meta name="geo.region" content="AE-DU" />
+            <meta name="geo.placename" content="Dubai" />
+            <meta name="geo.position" content="25.276987;55.296249" />
+            <meta name="ICBM" content="25.276987, 55.296249" />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={type} />
@@ -37,6 +45,8 @@ const SEO = ({
             <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
             <meta property="og:image" content={imageUrl} />
+            <meta property="og:site_name" content="Symbol Advertising" />
+            <meta property="og:locale" content="en_AE" />
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />

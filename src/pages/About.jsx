@@ -42,8 +42,9 @@ const About = () => {
     return (
         <div className="bg-black min-h-screen pt-20">
             <SEO
-                title="About Symbol Advertising | 25+ Years of Creative Excellence"
-                description="Discover our journey since 1999. Symbol Advertising has served 500+ clients with innovative branding, digital experiences, and comprehensive advertising solutions."
+                title="About Symbol Advertising | Creative Agency in Dubai"
+                description="Discover our journey since 1999. Symbol Advertising is a premier Dubai-based agency serving 500+ clients with innovative branding and digital solutions across the UAE."
+                keywords="about symbol advertising, advertising agency dubai history, creative agency uae, top branding agencies dubai"
                 canonical="/about"
             />
             <section className="relative py-24 px-6 max-w-7xl mx-auto">

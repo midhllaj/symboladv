@@ -12,8 +12,9 @@ const Home = () => {
     return (
         <main>
             <SEO
-                title="Symbol Advertising | Premium Creative Agency Since 1999"
-                description="Transform your brand with Symbol Advertising. 25+ years of experience, 500+ satisfied clients. Full-service creative agency offering branding, digital experiences, exhibitions, and outdoor advertising."
+                title="Symbol Advertising Dubai | Ad Agency UAE"
+                description="Top advertising agency in Dubai. Transform your brand with Symbol Advertising. 25+ years of experience, 500+ satisfied clients. Branding, digital, and outdoor."
+                keywords="symbol advertising, symbol advertising dubai, advertising agency dubai, creative agency uae, branding agency deira, digital marketing dubai, signboard manufacturing uae"
                 canonical="/"
             />
             <Hero />

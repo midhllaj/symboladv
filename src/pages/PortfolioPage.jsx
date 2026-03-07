@@ -145,8 +145,9 @@ const PortfolioPage = () => {
     return (
         <div className="min-h-screen bg-black pt-32 pb-24">
             <SEO
-                title="Our Work & Portfolio | Symbol Advertising"
-                description="Browse our portfolio of successful branding projects, digital campaigns, signage solutions, and creative work. See how Symbol Advertising has transformed 500+ brands since 1999."
+                title="Advertising Portfolio Dubai | Symbol Advertising Projects"
+                description="Browse our portfolio of successful branding projects, digital campaigns, and signage solutions in Dubai. See how Symbol Advertising transforms UAE brands."
+                keywords="advertising portfolio dubai, uae creative agency projects, branding examples dubai, signboard projects uae"
                 canonical="/portfolio"
             />
             <div className="max-w-7xl mx-auto px-6">

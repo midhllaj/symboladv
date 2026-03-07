@@ -78,7 +78,7 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                     />
                 </a>
 
-                {/* Desktop Menu */}
+                {/* Desktop Nav Links + WhatsApp CTA */}
                 <div className="hidden md:flex items-center space-x-8">
                     {links.map((link, index) => (
                         <div key={link.name} className="relative group">
@@ -103,7 +103,6 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                                         }
                                     }
                                 }}
-                                // Stylized link: White/60 transparent, red on hover
                                 className="text-sm font-medium transition-colors duration-300 text-white/60 hover:text-primary-red"
                             >
                                 {link.name}
@@ -132,6 +131,7 @@ const Navbar = ({ menuActive, setMenuActive }) => {
                             )}
                         </div>
                     ))}
+
                 </div>
 
                 {/* Mobile Menu Toggle */}

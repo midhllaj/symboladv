@@ -47,8 +47,9 @@ const Nav = () => {
             <div className='flex flex-col gap-2'>
                 <h3 className='mb-2 uppercase text-[#ffffff80]'>Connect</h3>
                 <a href="https://www.instagram.com/symboladvertising/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">Instagram</a>
-                <p className="text-white">LinkedIn</p>
-                <p className="text-white">Twitter</p>
+                <a href="https://wa.me/971562846202" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">WhatsApp</a>
+                <a href="#" className="text-white hover:underline">LinkedIn</a>
+                <a href="#" className="text-white hover:underline">Twitter</a>
             </div>
         </div>
     )
