@@ -21,7 +21,7 @@ const Section2 = () => {
     return (
         <div className='flex justify-between items-end'>
             <h1 className='text-[10vw] leading-[0.8] mt-10 text-white font-bold tracking-tighter'>Symbol Advertising</h1>
-            <p className="text-white/60">©2024</p>
+            <p className="text-white/60 text-right">©2024<br /><span className="text-sm">Website by <a href="https://www.midhlaj.co" target="_blank" rel="noopener" className="hover:underline">Midhlaj</a></span></p>
         </div>
     )
 }
